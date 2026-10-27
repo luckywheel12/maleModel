@@ -1,0 +1,2162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ARIYAN | Male Model Agency</title>
+  <meta name="description" content="ARIYAN connects male models with creative opportunities and clients. Explore our model application process and services.">
+  <meta name="theme-color" content="#080808">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --bg: #080808;
+      --surface: #111111;
+      --surface-2: #171717;
+      --gold: #d8b467;
+      --gold-light: #f1d79b;
+      --white: #f7f5f0;
+      --muted: #a6a6a6;
+      --border: rgba(216,180,103,.2);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .gold {
+      color: var(--gold);
+    }
+
+    .section {
+      padding: 86px 0;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto 38px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin-top: 10px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(30px, 5vw, 44px);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .section-heading p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      color: var(--gold);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: rgba(216,180,103,.1);
+      transform: translateY(-2px);
+    }
+
+    /* HEADER */
+
+    .site-header {
+      position: sticky;
+      z-index: 100;
+      top: 0;
+      background: rgba(8,8,8,.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: "Playfair Display", serif;
+      font-size: 21px;
+      font-weight: 700;
+    }
+
+    .brand-name {
+      display: block;
+      color: var(--white);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      line-height: 1.1;
+    }
+
+    .brand-subtitle {
+      display: block;
+      margin-top: 4px;
+      color: var(--gold);
+      font-size: 8px;
+      letter-spacing: 2px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .nav-actions .btn {
+      min-height: 40px;
+      padding: 9px 15px;
+      font-size: 12px;
+    }
+
+    /* HERO */
+
+/* ===== ARIYAN FULL-BACKGROUND HERO ===== */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #080808;
+
+  /* Model photo fills the entire hero background */
+  background-image: url("images/hero-model.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+}
+
+/* Dark overlay keeps the text readable */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 8, 8, 0.98) 0%,
+      rgba(8, 8, 8, 0.91) 30%,
+      rgba(8, 8, 8, 0.62) 53%,
+      rgba(8, 8, 8, 0.12) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(8, 8, 8, 0.55),
+      transparent 35%,
+      rgba(8, 8, 8, 0.12)
+    );
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  width: min(620px, 62%);
+  padding: 85px 0 65px;
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.hero-kicker::before {
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  content: "";
+}
+
+.hero h1 {
+  max-width: 650px;
+  margin-top: 22px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(43px, 6vw, 76px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -1.5px;
+}
+
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero-description {
+  max-width: 440px;
+  margin-top: 21px;
+  color: #d0ccc4;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 38px;
+}
+
+.hero-stat strong {
+  display: block;
+  color: var(--gold);
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.hero-stat span {
+  display: block;
+  margin-top: 3px;
+  color: #d0ccc4;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* The image is now the background, so hide the old image card */
+.hero-visual {
+  display: none !important;
+}
+
+/* ===== TABLET ===== */
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 550px;
+    background-position: 62% center;
+  }
+
+  .hero-copy {
+    width: 66%;
+    padding: 70px 0 55px;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 6.5vw, 60px);
+  }
+}
+
+/* ===== MOBILE-FIRST IMAGE POSITIONING ===== */
+
+@media (max-width: 650px) {
+  .hero {
+    min-height: 650px;
+    align-items: flex-start;
+    background-color: #080808;
+
+    /* Keep the model visible behind the text */
+    background-size: auto 100%;
+    background-position: 62% center;
+  }
+
+  .hero::before {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(8, 8, 8, 0.91) 0%,
+        rgba(8, 8, 8, 0.76) 42%,
+        rgba(8, 8, 8, 0.32) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(8, 8, 8, 0.48) 0%,
+        rgba(8, 8, 8, 0.12) 35%,
+        rgba(8, 8, 8, 0.22) 70%,
+        rgba(8, 8, 8, 0.88) 100%
+      );
+  }
+
+  .hero-grid {
+    width: calc(100% - 30px);
+    margin-inline: auto;
+  }
+
+  .hero-copy {
+    width: 100%;
+    max-width: 440px;
+    padding: 58px 0 42px;
+  }
+
+  .hero-kicker {
+    gap: 8px;
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .hero-kicker::before {
+    width: 20px;
+  }
+
+  .hero h1 {
+    max-width: 390px;
+    margin-top: 19px;
+    font-size: clamp(39px, 10.5vw, 54px);
+    line-height: 1.08;
+    letter-spacing: -1px;
+  }
+
+  .hero-description {
+    max-width: 330px;
+    margin-top: 17px;
+    color: #e0ddd6;
+    font-size: 12px;
+    line-height: 1.85;
+  }
+
+  .hero-actions {
+    gap: 9px;
+    margin-top: 23px;
+  }
+
+  .hero-actions .btn {
+    min-height: 43px;
+    padding: 10px 13px;
+    font-size: 11px;
+  }
+
+  .hero-stats {
+    gap: 18px;
+    margin-top: 31px;
+  }
+
+  .hero-stat strong {
+    font-size: 19px;
+  }
+
+  .hero-stat span {
+    font-size: 8px;
+    letter-spacing: 0.7px;
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 380px) {
+  .hero {
+    min-height: 620px;
+    background-position: 59% center;
+  }
+
+  .hero-copy {
+    padding-top: 43px;
+  }
+
+  .hero h1 {
+    font-size: 37px;
+  }
+
+  .hero-stats {
+    gap: 13px;
+  }
+
+  .hero-stat span {
+    font-size: 7px;
+  }
+}
+
+
+    /* MARQUEE */
+
+    .marquee {
+      overflow: hidden;
+      padding: 15px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #0d0d0d;
+    }
+
+    .marquee-inner {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 30px;
+      color: #bcb6a9;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .marquee-inner span {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .marquee-inner i {
+      color: var(--gold);
+      font-size: 11px;
+    }
+
+    /* SERVICES */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #151515, #0c0c0c);
+      transition: .25s ease;
+    }
+
+    .service-card:hover {
+      border-color: rgba(216,180,103,.65);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 47px;
+      height: 47px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    .service-card h3 {
+      margin-top: 20px;
+      font-family: "Playfair Display", serif;
+      font-size: 21px;
+    }
+
+    .service-card p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 19px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* STATS */
+
+    .stats-section {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #0d0d0d;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .stat-card {
+      padding: 26px 15px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat-card i {
+      color: var(--gold);
+      font-size: 19px;
+    }
+
+    .stat-number {
+      display: block;
+      margin-top: 9px;
+      color: var(--gold);
+      font-size: clamp(25px, 4vw, 34px);
+      font-weight: 700;
+    }
+
+    .stat-label {
+      display: block;
+      margin-top: 4px;
+      color: #aaa;
+      font-size: 11px;
+    }
+
+    /* ANALYTICS */
+
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .85fr;
+      gap: 20px;
+    }
+
+    .chart-card {
+      min-width: 0;
+      padding: 23px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .chart-header h3 {
+      font-size: 15px;
+    }
+
+    .chart-header span {
+      color: var(--gold);
+      font-size: 10px;
+    }
+
+    .chart-box {
+      position: relative;
+      height: 250px;
+    }
+
+    .chart-note {
+      margin-top: 12px;
+      color: #777;
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    /* REVIEWS */
+
+    .reviews-section {
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(216,180,103,.07), transparent 55%),
+        #0b0b0b;
+      border-top: 1px solid var(--border);
+    }
+
+    .reviews-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 24px;
+    }
+
+    .reviews-summary {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .summary-stars {
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .summary-caption {
+      color: #aaa;
+      font-size: 11px;
+    }
+
+    .review-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .review-arrow {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: #121212;
+      color: var(--gold);
+      transition: .2s;
+    }
+
+    .review-arrow:hover {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .review-card {
+      min-width: 0;
+      padding: 23px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(150deg, #171717, #0e0e0e);
+      animation: reviewFade .35s ease;
+    }
+
+    @keyframes reviewFade {
+      from {
+        opacity: .35;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .review-stars {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .review-quote {
+      min-height: 91px;
+      margin-top: 17px;
+      color: #ddd;
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .review-person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 19px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+
+    .review-avatar {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      flex-shrink: 0;
+      place-items: center;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      background: #211d15;
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .review-person h4 {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .review-person span {
+      display: block;
+      margin-top: 3px;
+      color: var(--gold);
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    .review-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 24px;
+    }
+
+    .review-dot {
+      width: 7px;
+      height: 7px;
+      padding: 0;
+      border: 0;
+      border-radius: 20px;
+      background: #444;
+      transition: .2s;
+    }
+
+    .review-dot.active {
+      width: 22px;
+      background: var(--gold);
+    }
+
+    /* CTA */
+
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 45px 35px;
+      border: 1px solid rgba(216,180,103,.45);
+      border-radius: 18px;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(216,180,103,.16), transparent 48%),
+        linear-gradient(120deg, #171510, #0c0c0c);
+      text-align: center;
+    }
+
+    .cta-panel h2 {
+      margin-top: 10px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.2;
+    }
+
+    .cta-panel p {
+      max-width: 550px;
+      margin: 13px auto 23px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 11px;
+    }
+
+    /* FOOTER */
+
+    .site-footer {
+      padding: 35px 0 20px;
+      border-top: 1px solid var(--border);
+      background: #070707;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 25px;
+      padding-bottom: 25px;
+    }
+
+    .footer-description {
+      max-width: 350px;
+      margin-top: 13px;
+      color: #888;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: #aaa;
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding-top: 17px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: #777;
+      font-size: 10px;
+    }
+
+    /* LOGIN / REGISTER MODAL */
+
+    .modal {
+      position: fixed;
+      z-index: 500;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(0,0,0,.82);
+      backdrop-filter: blur(7px);
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-panel {
+      position: relative;
+      width: min(430px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #111;
+      box-shadow: 0 20px 80px rgba(0,0,0,.6);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: transparent;
+      color: #ddd;
+      font-size: 18px;
+    }
+
+    .modal-panel h2 {
+      padding-right: 30px;
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+    }
+
+    .modal-intro {
+      margin: 8px 0 20px;
+      color: #999;
+      font-size: 12px;
+    }
+
+    .form-field {
+      margin-top: 14px;
+    }
+
+    .form-field label {
+      display: block;
+      margin-bottom: 7px;
+      color: #ddd;
+      font-size: 11px;
+    }
+
+    .form-field input {
+      width: 100%;
+      min-height: 45px;
+      padding: 11px 13px;
+      border: 1px solid #343434;
+      border-radius: 8px;
+      outline: none;
+      background: #090909;
+      color: white;
+      font-size: 13px;
+    }
+
+    .form-field input:focus {
+      border-color: var(--gold);
+    }
+
+    .modal-submit {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .modal-message {
+      margin-top: 13px;
+      color: var(--gold);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .modal-switch {
+      margin-top: 17px;
+      color: #aaa;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .modal-switch button {
+      border: 0;
+      background: transparent;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: 520px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr .8fr;
+        gap: 16px;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 6vw, 58px);
+      }
+
+      .hero-frame {
+        height: 380px;
+      }
+
+      .hero-visual {
+        min-height: 400px;
+      }
+
+      .services-grid {
+        gap: 12px;
+      }
+
+      .service-card {
+        padding: 21px;
+      }
+
+      .analytics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: calc(100% - 30px);
+      }
+
+      .section {
+        padding: 58px 0;
+      }
+
+      .nav {
+        min-height: 65px;
+        gap: 8px;
+      }
+
+      .brand {
+        gap: 7px;
+      }
+
+      .brand-mark {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+      }
+
+      .brand-name {
+        font-size: 17px;
+        letter-spacing: 2px;
+      }
+
+      .brand-subtitle {
+        font-size: 7px;
+        letter-spacing: 1.4px;
+      }
+
+      .nav-actions {
+        gap: 6px;
+      }
+
+      .nav-actions .btn {
+        min-height: 35px;
+        padding: 7px 10px;
+        font-size: 10px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero::before {
+        background: linear-gradient(90deg, rgba(8,8,8,.95), rgba(8,8,8,.74));
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .hero-copy {
+        padding: 47px 0 10px;
+      }
+
+      .hero-kicker {
+        font-size: 9px;
+        letter-spacing: 2px;
+      }
+
+      .hero h1 {
+        max-width: 450px;
+        margin-top: 17px;
+        font-size: clamp(40px, 11vw, 58px);
+        letter-spacing: -1px;
+      }
+
+      .hero-description {
+        margin-top: 15px;
+        font-size: 12px;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        gap: 9px;
+        margin-top: 22px;
+      }
+
+      .hero-actions .btn {
+        min-height: 43px;
+        padding: 11px 13px;
+        font-size: 11px;
+      }
+
+      .hero-stats {
+        gap: 23px;
+        margin-top: 27px;
+      }
+
+      .hero-stat strong {
+        font-size: 20px;
+      }
+
+      .hero-stat span {
+        font-size: 9px;
+      }
+
+      .hero-visual {
+        min-height: 0;
+        height: 300px;
+        margin-top: 15px;
+      }
+
+      .hero-frame {
+        width: min(78%, 300px);
+        height: 295px;
+        border-radius: 130px 130px 10px 10px;
+      }
+
+      .image-label {
+        right: 2px;
+        bottom: 15px;
+        padding: 10px 12px;
+      }
+
+      .image-label strong {
+        font-size: 10px;
+      }
+
+      .marquee-inner {
+        justify-content: flex-start;
+        gap: 28px;
+        font-size: 9px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .service-card {
+        padding: 22px;
+      }
+
+      .service-card h3 {
+        margin-top: 14px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .stat-card {
+        padding: 19px 10px;
+      }
+
+      .stat-label {
+        font-size: 10px;
+      }
+
+      .chart-card {
+        padding: 16px;
+      }
+
+      .chart-box {
+        height: 220px;
+      }
+
+      .reviews-topline {
+        align-items: flex-end;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .review-card {
+        padding: 21px;
+      }
+
+      .review-quote {
+        min-height: 0;
+      }
+
+      .review-card:not(.is-visible) {
+        display: none;
+      }
+
+      .cta-panel {
+        padding: 34px 18px;
+      }
+
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .cta-actions .btn {
+        width: 100%;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        gap: 14px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .modal-panel {
+        padding: 25px 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header class="site-header">
+    <div class="container nav">
+
+      <a class="brand" href="index.html" aria-label="ARIYAN Home">
+        <span class="brand-mark">A</span>
+        <span>
+          <span class="brand-name">ARIYAN</span>
+          <span class="brand-subtitle">MALE MODEL AGENCY</span>
+        </span>
+      </a>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline" type="button" data-open-modal="login">
+          <i class="fa-regular fa-user"></i> Login
+        </button>
+
+        <button class="btn btn-primary" type="button" data-open-modal="register">
+          Register <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div class="hero-copy">
+          <div class="hero-kicker">A New Standard of Talent</div>
+
+          <h1>
+            Your Look.<br>
+            Your Talent.<br>
+            <span>Your Opportunity.</span>
+          </h1>
+
+          <p class="hero-description">
+            Discover opportunities, build your portfolio, and connect
+            with creative projects through ARIYAN Male Model Agency.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="become-model.html">
+              Become a Model
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a class="btn btn-outline" href="client.html">
+              Hire a Model
+              <i class="fa-solid fa-user-tie"></i>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong><span class="counter" data-target="1200">0</span>+</strong>
+              <span>Talent Reach</span>
+            </div>
+
+            <div class="hero-stat">
+              <strong><span class="counter" data-target="85">0</span>+</strong>
+              <span>Creative Projects</span>
+            </div>
+
+            <div class="hero-stat">
+              <strong><span class="counter" data-target="12">0</span>+</strong>
+              <span>Service Categories</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-frame">
+            <img
+              src="images/hero-model.png"
+              alt="Male fashion model"
+              onerror="this.style.display='none';"
+            >
+          </div>
+
+          <div class="image-label">
+            <strong>CONFIDENCE IN EVERY FRAME</strong>
+            <span>ARIYAN — Male Model Agency</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BRAND STRIP -->
+
+    <div class="marquee">
+      <div class="container marquee-inner">
+        <span><i class="fa-solid fa-star"></i> FASHION</span>
+        <span><i class="fa-solid fa-camera"></i> PHOTOGRAPHY</span>
+        <span><i class="fa-solid fa-shirt"></i> COMMERCIAL</span>
+        <span><i class="fa-solid fa-user-tie"></i> TALENT</span>
+        <span><i class="fa-solid fa-gem"></i> STYLE</span>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+
+    <section class="section" id="services">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">What We Do</div>
+          <h2>Opportunities That <span class="gold">Fit Your Vision</span></h2>
+          <p>
+            Explore our core services for models, brands, and creative clients.
+          </p>
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-person"></i>
+            </div>
+
+            <h3>Model Registration</h3>
+
+            <p>
+              Start your journey by sharing your profile, details, and
+              interests through our model application process.
+            </p>
+
+            <a class="service-link" href="become-model.html">
+              Apply Now <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-camera-retro"></i>
+            </div>
+
+            <h3>Creative Projects</h3>
+
+            <p>
+              Explore potential opportunities in fashion, commercial
+              photography, campaigns, and other creative work.
+            </p>
+
+            <a class="service-link" href="client.html">
+              Explore Services <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-handshake"></i>
+            </div>
+
+            <h3>Client Connections</h3>
+
+            <p>
+              Help clients explore talent options for suitable creative
+              projects and professional collaborations.
+            </p>
+
+            <a class="service-link" href="client.html">
+              Find Talent <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- STATISTICS -->
+
+    <section class="section stats-section" id="statistics">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Our Overview</div>
+          <h2>Growing With <span class="gold">Creative Ambition</span></h2>
+          <p>
+            An overview of the agency's platform activity and service categories.
+          </p>
+        </div>
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <i class="fa-solid fa-users"></i>
+            <span class="stat-number"><span class="counter" data-target="1200">0</span>+</span>
+            <span class="stat-label">Talent Reach</span>
+          </div>
+
+          <div class="stat-card">
+            <i class="fa-solid fa-briefcase"></i>
+            <span class="stat-number"><span class="counter" data-target="85">0</span>+</span>
+            <span class="stat-label">Project Opportunities</span>
+          </div>
+
+          <div class="stat-card">
+            <i class="fa-solid fa-layer-group"></i>
+            <span class="stat-number"><span class="counter" data-target="12">0</span>+</span>
+            <span class="stat-label">Service Categories</span>
+          </div>
+
+          <div class="stat-card">
+            <i class="fa-solid fa-globe"></i>
+            <span class="stat-number"><span class="counter" data-target="2">0</span></span>
+            <span class="stat-label">Application Areas</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CHARTS -->
+
+    <section class="section" id="insights">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Platform Insights</div>
+          <h2>A Closer Look at <span class="gold">Our Platform</span></h2>
+          <p>
+            Visual summaries of the values configured for this website.
+          </p>
+        </div>
+
+        <div class="analytics-grid">
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>Activity Overview</h3>
+              <span><i class="fa-solid fa-chart-line"></i> Overview</span>
+            </div>
+
+            <div class="chart-box">
+              <canvas id="activityChart" aria-label="Activity overview chart"></canvas>
+            </div>
+
+            <p class="chart-note">
+              Chart values are configured in this page's JavaScript. They are
+              not live analytics collected from a server.
+            </p>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>Service Categories</h3>
+              <span><i class="fa-solid fa-chart-pie"></i> Breakdown</span>
+            </div>
+
+            <div class="chart-box">
+              <canvas id="serviceChart" aria-label="Service categories chart"></canvas>
+            </div>
+
+            <p class="chart-note">
+              The chart displays the category values configured below.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY REVIEWS -->
+
+    <section class="section reviews-section" id="reviews">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Community Feedback</div>
+          <h2>Words That <span class="gold">Build Confidence</span></h2>
+          <p>
+            Explore the feedback examples displayed on our platform.
+          </p>
+        </div>
+
+        <div class="reviews-topline">
+          <div class="reviews-summary">
+            <div class="summary-stars" aria-label="Five star display">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+
+            <div class="summary-caption">Community feedback</div>
+          </div>
+
+          <div class="review-controls">
+            <button class="review-arrow" id="reviewPrev" type="button" aria-label="Previous reviews">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <button class="review-arrow" id="reviewNext" type="button" aria-label="Next reviews">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="reviews-grid" id="reviewsGrid" aria-live="polite"></div>
+        <div class="review-dots" id="reviewDots"></div>
+
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+
+    <section class="section">
+      <div class="container">
+
+        <div class="cta-panel">
+          <div class="eyebrow">Your Next Step</div>
+
+          <h2>Ready to Make Your <span class="gold">Move?</span></h2>
+
+          <p>
+            Start your model application or explore options for finding
+            talent for your next creative project.
+          </p>
+
+          <div class="cta-actions">
+            <a href="become-model.html" class="btn btn-primary">
+              Become a Model <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a href="client.html" class="btn btn-outline">
+              I Need a Model <i class="fa-solid fa-user-tie"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="footer-top">
+        <div>
+          <a class="brand" href="index.html">
+            <span class="brand-mark">A</span>
+            <span>
+              <span class="brand-name">ARIYAN</span>
+              <span class="brand-subtitle">MALE MODEL AGENCY</span>
+            </span>
+          </a>
+
+          <p class="footer-description">
+            Connecting talent, creativity, and opportunities through a
+            modern male model agency platform.
+          </p>
+        </div>
+
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="become-model.html">Become a Model</a>
+          <a href="client.html">For Clients</a>
+          <a href="#services">Services</a>
+          <a href="#reviews">Reviews</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> ARIYAN. All rights reserved.</span>
+        <span>Style. Talent. Opportunity.</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- LOGIN / REGISTER MODAL -->
+
+  <div class="modal" id="accountModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-panel">
+
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h2 id="modalTitle">Welcome Back</h2>
+      <p class="modal-intro" id="modalIntro">
+        Enter your details to continue.
+      </p>
+
+      <form id="accountForm">
+        <div class="form-field" id="nameField" hidden>
+          <label for="accountName">Full Name</label>
+          <input id="accountName" name="name" type="text" autocomplete="name">
+        </div>
+
+        <div class="form-field">
+          <label for="accountEmail">Email Address</label>
+          <input id="accountEmail" name="email" type="email" autocomplete="email" required>
+        </div>
+
+        <div class="form-field">
+          <label for="accountPassword">Password</label>
+          <input id="accountPassword" name="password" type="password" autocomplete="current-password" minlength="6" required>
+        </div>
+
+        <button class="btn btn-primary modal-submit" type="submit" id="modalSubmit">
+          Login
+        </button>
+
+        <p class="modal-message" id="modalMessage" role="status"></p>
+      </form>
+
+      <div class="modal-switch">
+        <span id="switchPrompt">Don't have an account?</span>
+        <button type="button" id="switchMode">Register</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* ======================================================
+       EDITABLE WEBSITE SETTINGS
+       Change these values when you want to update the page.
+    ====================================================== */
+
+    const SITE_SETTINGS = {
+      talentReach: 1200,
+      projectOpportunities: 85,
+      serviceCategories: 12,
+      applicationAreas: 2,
+
+      // This is a visual target for the visitor chart,
+      // not a real visitor count from a server.
+      visitorChartBase: 120
+    };
+
+    /* ======================================================
+       COUNTER ANIMATION
+    ====================================================== */
+
+    function animateCounter(element) {
+      const target = Number(element.dataset.target || 0);
+      const duration = 1200;
+      const startTime = performance.now();
+
+      function update(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+
+        element.textContent = Math.floor(target * eased).toLocaleString();
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          element.textContent = target.toLocaleString();
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+
+    document.querySelectorAll(".counter").forEach(counter => {
+      counterObserver.observe(counter);
+    });
+
+    /* ======================================================
+       CHARTS
+       These are configured sample values, not live analytics.
+    ====================================================== */
+
+    if (typeof Chart !== "undefined") {
+      Chart.defaults.color = "#a6a6a6";
+      Chart.defaults.font.family = "DM Sans, sans-serif";
+
+      const activityCanvas = document.getElementById("activityChart");
+
+      if (activityCanvas) {
+        new Chart(activityCanvas, {
+          type: "line",
+          data: {
+            labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            datasets: [{
+              label: "Activity",
+              data: [35, 48, 42, 64, 58, 82, 96],
+              borderColor: "#d8b467",
+              backgroundColor: "rgba(216,180,103,0.12)",
+              fill: true,
+              tension: 0.4,
+              borderWidth: 2,
+              pointRadius: 3,
+              pointBackgroundColor: "#f1d79b"
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                border: { color: "#333" }
+              },
+              y: {
+                beginAtZero: true,
+                grid: { color: "rgba(255,255,255,0.06)" },
+                border: { display: false },
+                ticks: { precision: 0 }
+              }
+            }
+          }
+        });
+      }
+
+      const serviceCanvas = document.getElementById("serviceChart");
+
+      if (serviceCanvas) {
+        new Chart(serviceCanvas, {
+          type: "doughnut",
+          data: {
+            labels: ["Fashion", "Commercial", "Photography", "Other"],
+            datasets: [{
+              data: [35, 25, 25, 15],
+              backgroundColor: ["#d8b467", "#94763d", "#5c523e", "#333333"],
+              borderColor: "#111111",
+              borderWidth: 4,
+              hoverOffset: 5
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: "68%",
+            plugins: {
+              legend: {
+                position: "bottom",
+                labels: {
+                  padding: 16,
+                  usePointStyle: true,
+                  pointStyle: "circle",
+                  boxWidth: 7,
+                  font: { size: 10 }
+                }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    /* ======================================================
+       COMMUNITY REVIEWS
+       Fixed English-language review examples.
+       The order is shuffled deterministically each calendar day.
+    ====================================================== */
+
+    const REVIEW_PROFILES = [
+      {
+        name: "Daniel Rahman",
+        initials: "DR",
+        type: "CLIENT",
+        stars: 5,
+        en: "The team communicated clearly and made the project process easy to understand."
+      },
+      {
+        name: "Arif Hasan",
+        initials: "AH",
+        type: "MODEL",
+        stars: 5,
+        en: "The guidance was helpful, and I understood the expectations before starting."
+      },
+      {
+        name: "Michael Carter",
+        initials: "MC",
+        type: "CLIENT",
+        stars: 4,
+        en: "A promising concept for connecting creative clients with talent."
+      },
+      {
+        name: "Samiul Islam",
+        initials: "SI",
+        type: "MODEL",
+        stars: 5,
+        en: "The application information was organized and easy to follow."
+      },
+      {
+        name: "Oliver James",
+        initials: "OJ",
+        type: "CLIENT",
+        stars: 4,
+        en: "A clean presentation with a professional look and feel."
+      },
+      {
+        name: "Tanvir Ahmed",
+        initials: "TA",
+        type: "MODEL",
+        stars: 5,
+        en: "The platform explains the next steps in a simple way."
+      },
+      {
+        name: "Adam Wilson",
+        initials: "AW",
+        type: "CLIENT",
+        stars: 5,
+        en: "The layout makes the intended services easy to understand."
+      },
+      {
+        name: "Nabil Hossain",
+        initials: "NH",
+        type: "MODEL",
+        stars: 4,
+        en: "The model application journey looks clear and straightforward."
+      },
+      {
+        name: "Ryan Miller",
+        initials: "RM",
+        type: "CLIENT",
+        stars: 5,
+        en: "A useful concept for a modern model agency website."
+      }
+    ];
+
+    const reviewsGrid = document.getElementById("reviewsGrid");
+    const reviewDots = document.getElementById("reviewDots");
+    const reviewPrev = document.getElementById("reviewPrev");
+    const reviewNext = document.getElementById("reviewNext");
+
+    let shuffledReviews = [];
+    let reviewPage = 0;
+
+    const REVIEWS_PER_PAGE = 3;
+
+    function todayISO() {
+      const now = new Date();
+
+      return [
+        now.getFullYear(),
+        String(now.getMonth() + 1).padStart(2, "0"),
+        String(now.getDate()).padStart(2, "0")
+      ].join("-");
+    }
+
+    function seededRandom(seed) {
+      let value = seed >>> 0;
+
+      return function() {
+        value += 0x6D2B79F5;
+
+        let t = value;
+        t = Math.imul(t ^ (t >>> 15), t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+
+    function dateSeed(dateString) {
+      let hash = 2166136261;
+
+      for (let i = 0; i < dateString.length; i++) {
+        hash ^= dateString.charCodeAt(i);
+        hash = Math.imul(hash, 16777619);
+      }
+
+      return hash >>> 0;
+    }
+
+    function shuffleReviewsForToday() {
+      const random = seededRandom(dateSeed(todayISO()));
+
+      shuffledReviews = [...REVIEW_PROFILES];
+
+      for (let i = shuffledReviews.length - 1; i > 0; i--) {
+        const j = Math.floor(random() * (i + 1));
+
+        [shuffledReviews[i], shuffledReviews[j]] =
+          [shuffledReviews[j], shuffledReviews[i]];
+      }
+
+      reviewPage = 0;
+      renderReviews();
+    }
+
+    function getTotalReviewPages() {
+      return Math.ceil(shuffledReviews.length / REVIEWS_PER_PAGE);
+    }
+
+    function renderReviews() {
+      if (!reviewsGrid || !reviewDots) return;
+
+      const start = reviewPage * REVIEWS_PER_PAGE;
+      const visibleReviews = shuffledReviews.slice(
+        start,
+        start + REVIEWS_PER_PAGE
+      );
+
+      reviewsGrid.innerHTML = visibleReviews.map((review, index) => {
+        const stars = Array.from(
+          { length: 5 },
+          (_, i) => i < review.stars
+            ? '<i class="fa-solid fa-star"></i>'
+            : '<i class="fa-regular fa-star"></i>'
+        ).join("");
+
+        return `
+          <article class="review-card is-visible"
+                   style="animation-delay:${index * 70}ms">
+
+            <div class="review-stars" aria-label="${review.stars} out of 5 stars">
+              ${stars}
+            </div>
+
+            <p class="review-quote">
+              “${review.en}”
+            </p>
+
+            <div class="review-person">
+              <div class="review-avatar">${review.initials}</div>
+
+              <div>
+                <h4>${review.name}</h4>
+                <span>${review.type}</span>
+              </div>
+            </div>
+
+          </article>
+        `;
+      }).join("");
+
+      const totalPages = getTotalReviewPages();
+
+      reviewDots.innerHTML = Array.from(
+        { length: totalPages },
+        (_, index) => `
+          <button
+            type="button"
+            class="review-dot ${index === reviewPage ? "active" : ""}"
+            aria-label="Show review page ${index + 1}"
+            aria-current="${index === reviewPage ? "true" : "false"}"
+            data-review-page="${index}">
+          </button>
+        `
+      ).join("");
+
+      reviewDots.querySelectorAll("[data-review-page]").forEach(button => {
+        button.addEventListener("click", () => {
+          reviewPage = Number(button.dataset.reviewPage);
+          renderReviews();
+        });
+      });
+    }
+
+    function changeReviewPage(direction) {
+      const totalPages = getTotalReviewPages();
+
+      reviewPage = (reviewPage + direction + totalPages) % totalPages;
+
+      renderReviews();
+    }
+
+    reviewPrev?.addEventListener("click", () => changeReviewPage(-1));
+    reviewNext?.addEventListener("click", () => changeReviewPage(1));
+
+    shuffleReviewsForToday();
+
+    // If the calendar date changes while this page remains open,
+    // refresh the order for the new day.
+    let lastReviewDate = todayISO();
+
+    setInterval(() => {
+      const currentDate = todayISO();
+
+      if (currentDate !== lastReviewDate) {
+        lastReviewDate = currentDate;
+        shuffleReviewsForToday();
+      }
+    }, 60000);
+
+    /* ======================================================
+       LOGIN / REGISTER MODAL
+       The form UI is provided here. Real account creation
+       requires a connected authentication backend.
+    ====================================================== */
+
+    const accountModal = document.getElementById("accountModal");
+    const modalClose = document.getElementById("modalClose");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalIntro = document.getElementById("modalIntro");
+    const modalSubmit = document.getElementById("modalSubmit");
+    const modalMessage = document.getElementById("modalMessage");
+    const nameField = document.getElementById("nameField");
+    const accountName = document.getElementById("accountName");
+    const accountPassword = document.getElementById("accountPassword");
+    const switchPrompt = document.getElementById("switchPrompt");
+    const switchMode = document.getElementById("switchMode");
+    const accountForm = document.getElementById("accountForm");
+
+    let accountMode = "login";
+
+    function setAccountMode(mode) {
+      accountMode = mode;
+
+      const isRegister = mode === "register";
+
+      modalTitle.textContent = isRegister ? "Create Your Account" : "Welcome Back";
+
+      modalIntro.textContent = isRegister
+        ? "Enter your details to begin."
+        : "Enter your details to continue.";
+
+      modalSubmit.textContent = isRegister ? "Create Account" : "Login";
+      nameField.hidden = !isRegister;
+      accountName.required = isRegister;
+
+      accountPassword.autocomplete = isRegister
+        ? "new-password"
+        : "current-password";
+
+      switchPrompt.textContent = isRegister
+        ? "Already have an account?"
+        : "Don't have an account?";
+
+      switchMode.textContent = isRegister ? "Login" : "Register";
+      modalMessage.textContent = "";
+    }
+
+    function openAccountModal(mode) {
+      setAccountMode(mode);
+      accountModal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeAccountModal() {
+      accountModal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll("[data-open-modal]").forEach(button => {
+      button.addEventListener("click", () => {
+        openAccountModal(button.dataset.openModal);
+      });
+    });
+
+    modalClose.addEventListener("click", closeAccountModal);
+
+    accountModal.addEventListener("click", event => {
+      if (event.target === accountModal) {
+        closeAccountModal();
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && accountModal.classList.contains("open")) {
+        closeAccountModal();
+      }
+    });
+
+    switchMode.addEventListener("click", () => {
+      setAccountMode(accountMode === "login" ? "register" : "login");
+    });
+
+    accountForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      modalMessage.textContent =
+        "Account access is not connected yet. Please connect an authentication service to enable login and registration.";
+    });
+
+    /* ======================================================
+       FOOTER YEAR
+    ====================================================== */
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>

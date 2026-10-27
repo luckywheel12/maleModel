@@ -1,0 +1,272 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Become a Model | ARIYAN</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#080808;color:#f5f5f5;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* NAVIGATION */
+.navbar{
+    min-height:78px;padding:16px 6%;
+    display:flex;align-items:center;justify-content:space-between;
+    background:#080808;border-bottom:1px solid rgba(255,255,255,.10);
+    position:relative;z-index:10
+}
+.logo{font-family:Georgia,"Times New Roman",serif;font-size:28px;letter-spacing:7px;line-height:1}
+.logo small{display:block;margin-top:6px;font-family:Arial,sans-serif;font-size:7px;letter-spacing:3px;color:#d8b467}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{font-size:10px;letter-spacing:2px;color:#bdbdbd;transition:.3s}
+.nav a:hover,.nav .active{color:#d8b467}
+
+/* HERO */
+.hero{
+    min-height:calc(100vh - 78px);
+    padding:65px 8%;
+    display:flex;align-items:center;
+    position:relative;overflow:hidden;
+    background:radial-gradient(circle at 85% 40%,rgba(216,180,103,.10),transparent 30%),#080808
+}
+.hero::after{
+    content:"ARIYAN";position:absolute;right:-70px;bottom:-60px;
+    font-family:Georgia,serif;font-size:clamp(150px,23vw,330px);
+    letter-spacing:15px;color:rgba(255,255,255,.018);pointer-events:none
+}
+.hero-content{width:100%;max-width:900px;position:relative;z-index:2}
+.eyebrow{color:#d8b467;font-size:10px;letter-spacing:5px;margin-bottom:25px}
+.hero-title{
+    font-family:Georgia,"Times New Roman",serif;font-weight:400;
+    font-size:clamp(54px,8vw,105px);line-height:.95;letter-spacing:6px
+}
+.hero-title span{color:#d8b467}
+.gold-line{width:70px;height:1px;background:#d8b467;margin:30px 0}
+.hero-subtitle{font-family:Georgia,serif;font-size:clamp(20px,3vw,32px);font-weight:400;letter-spacing:2px;margin-bottom:22px}
+.hero-description{max-width:620px;color:#999;font-size:14px;line-height:1.9;margin-bottom:30px}
+
+/* BUTTONS */
+.apply-button{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-height:54px;padding:0 32px;background:#d8b467;color:#080808;
+    font-size:11px;font-weight:bold;letter-spacing:2px;transition:all .3s ease
+}
+.apply-button:hover{background:#fff;transform:translateY(-3px)}
+
+/* INTRO */
+.intro{
+    padding:90px 8%;display:grid;grid-template-columns:.8fr 1.2fr;
+    gap:80px;background:#101010;border-top:1px solid rgba(255,255,255,.07)
+}
+.section-label{color:#d8b467;font-size:9px;letter-spacing:4px;margin-bottom:18px}
+.section-title{font-family:Georgia,serif;font-size:43px;font-weight:400;line-height:1.15}
+.intro-text{color:#999;font-size:14px;line-height:1.9}
+.intro-text p{margin-bottom:20px}
+
+/* REQUIREMENTS */
+.requirements{padding:95px 8%;background:#080808}
+.section-heading{margin-bottom:50px}
+.section-heading h2{font-family:Georgia,serif;font-size:clamp(38px,5vw,58px);font-weight:400;line-height:1.1}
+.section-heading h2 span{color:#d8b467}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{padding:32px;min-height:250px;background:#111;border:1px solid rgba(255,255,255,.10);transition:.3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(216,180,103,.5)}
+.card-number{color:#d8b467;font-family:Georgia,serif;font-size:27px;margin-bottom:30px}
+.card h3{font-size:14px;letter-spacing:2px;margin-bottom:15px}
+.card p{color:#888;font-size:13px;line-height:1.8}
+
+/* PROCESS */
+.process{padding:95px 8%;background:#101010}
+.process-list{max-width:900px}
+.process-item{
+    display:grid;grid-template-columns:70px 1fr;gap:25px;
+    padding:28px 0;border-top:1px solid rgba(255,255,255,.10)
+}
+.process-item:last-child{border-bottom:1px solid rgba(255,255,255,.10)}
+.process-number{color:#d8b467;font-family:Georgia,serif;font-size:24px}
+.process-item h3{font-size:14px;letter-spacing:2px;margin-bottom:9px}
+.process-item p{color:#888;font-size:13px;line-height:1.7}
+
+/* FINAL CTA */
+.final-cta{
+    padding:110px 8%;text-align:center;
+    background:radial-gradient(circle at center,rgba(216,180,103,.10),transparent 40%),#080808
+}
+.final-cta h2{font-family:Georgia,serif;font-size:clamp(40px,6vw,70px);font-weight:400;margin-bottom:20px}
+.final-cta h2 span{color:#d8b467}
+.final-cta p{max-width:580px;margin:0 auto 35px;color:#888;font-size:14px;line-height:1.8}
+
+/* FOOTER */
+footer{
+    padding:28px 8%;display:flex;justify-content:space-between;align-items:center;
+    border-top:1px solid rgba(255,255,255,.10);color:#666;font-size:9px;letter-spacing:2px
+}
+.footer-brand{color:#d8b467}
+
+/* MOBILE */
+@media(max-width:700px){
+    .navbar{min-height:72px;padding:14px 5%}
+    .logo{font-size:21px;letter-spacing:4px}
+    .logo small{font-size:6px;letter-spacing:2px}
+    .nav{gap:12px}
+    .nav a{font-size:7px;letter-spacing:.8px}
+
+    /* FIX: REMOVE EXCESS EMPTY SPACE */
+    .hero{
+        min-height:0;
+        height:auto;
+        padding:34px 7% 38px;
+        align-items:flex-start;
+    }
+    .hero::after{font-size:110px;right:-35px;bottom:-20px}
+    .hero-content{margin:0;padding:0}
+    .eyebrow{font-size:8px;letter-spacing:3px;margin-bottom:15px}
+    .hero-title{font-size:clamp(48px,15vw,70px);letter-spacing:3px;line-height:.98}
+    .gold-line{margin:18px 0}
+    .hero-subtitle{font-size:21px;line-height:1.3;margin-bottom:15px}
+    .hero-description{font-size:13px;line-height:1.7;margin-bottom:20px}
+    .apply-button{width:100%;min-height:52px;padding:0 12px;text-align:center;font-size:10px}
+
+    .intro{grid-template-columns:1fr;gap:25px;padding:55px 7%}
+    .section-title{font-size:36px}
+    .intro-text p{margin-bottom:15px}
+
+    .requirements{padding:55px 7%}
+    .section-heading{margin-bottom:28px}
+    .cards{grid-template-columns:1fr;gap:14px}
+    .card{min-height:0;padding:25px}
+    .card-number{margin-bottom:20px}
+
+    .process{padding:55px 7%}
+    .process-item{grid-template-columns:40px 1fr;gap:12px;padding:23px 0}
+
+    .final-cta{padding:60px 7%}
+    .final-cta h2{font-size:clamp(36px,10vw,48px)}
+    .final-cta .apply-button{width:100%}
+
+    footer{padding:23px 7%;flex-direction:column;gap:12px;text-align:center}
+}
+
+/* SMALL PHONES */
+@media(max-width:380px){
+    .navbar{padding-left:4%;padding-right:4%}
+    .logo{font-size:19px;letter-spacing:3px}
+    .nav{gap:8px}
+    .nav a{font-size:6px;letter-spacing:.5px}
+    .hero{padding:28px 6% 32px}
+    .hero-title{font-size:46px}
+    .hero-subtitle{font-size:19px}
+}
+</style>
+</head>
+
+<body>
+<header class="navbar">
+    <a href="index.html" class="logo">ARIYAN<small>MALE MODEL AGENCY</small></a>
+    <nav class="nav">
+        <a href="index.html">HOME</a>
+        <a href="#">MODELS</a>
+        <a href="#" class="active">BECOME A MODEL</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">JOIN ARIYAN</div>
+        <h1 class="hero-title">BECOME<br><span>A MODEL</span></h1>
+        <div class="gold-line"></div>
+        <h2 class="hero-subtitle">YOUR LOOK.<br>YOUR OPPORTUNITY.</h2>
+        <p class="hero-description">
+            ARIYAN connects confident and dedicated male models
+            with fashion, commercial, lifestyle, editorial and
+            creative opportunities.
+        </p>
+        <a href="model-area.html" class="apply-button">START YOUR APPLICATION →</a>
+    </div>
+</section>
+
+<section class="intro">
+    <div>
+        <div class="section-label">THE ARIYAN STANDARD</div>
+        <h2 class="section-title">More than<br>just a look.</h2>
+    </div>
+    <div class="intro-text">
+        <p>At ARIYAN, we believe a strong model is defined by more than appearance. Confidence, professionalism, discipline and individuality matter just as much.</p>
+        <p>Whether you are beginning your modeling journey or already have experience, we want to understand your potential and connect you with the right opportunities.</p>
+    </div>
+</section>
+
+<section class="requirements">
+    <div class="section-heading">
+        <div class="section-label">WHAT WE LOOK FOR</div>
+        <h2>Character behind<br><span>the camera.</span></h2>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <div class="card-number">01</div>
+            <h3>CONFIDENCE</h3>
+            <p>A natural presence, confidence and the ability to express yourself comfortably in front of the camera.</p>
+        </div>
+        <div class="card">
+            <div class="card-number">02</div>
+            <h3>PROFESSIONALISM</h3>
+            <p>Reliability, punctuality, discipline and a respectful attitude are essential qualities for every ARIYAN model.</p>
+        </div>
+        <div class="card">
+            <div class="card-number">03</div>
+            <h3>VERSATILITY</h3>
+            <p>The ability to adapt to different styles, concepts, campaigns and creative directions is highly valued.</p>
+        </div>
+    </div>
+</section>
+
+<section class="process">
+    <div class="section-heading">
+        <div class="section-label">HOW IT WORKS</div>
+        <h2>Your journey<br><span>starts here.</span></h2>
+    </div>
+
+    <div class="process-list">
+        <div class="process-item">
+            <div class="process-number">01</div>
+            <div>
+                <h3>SUBMIT YOUR APPLICATION</h3>
+                <p>Tell us about yourself, your experience, measurements and modeling interests.</p>
+            </div>
+        </div>
+        <div class="process-item">
+            <div class="process-number">02</div>
+            <div>
+                <h3>APPLICATION REVIEW</h3>
+                <p>Our team reviews your information and evaluates your profile for current opportunities.</p>
+            </div>
+        </div>
+        <div class="process-item">
+            <div class="process-number">03</div>
+            <div>
+                <h3>CONNECT WITH ARIYAN</h3>
+                <p>Selected applicants may be contacted for further discussion, casting or portfolio development.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta">
+    <div class="section-label">READY TO BEGIN?</div>
+    <h2>Take the <span>first step.</span></h2>
+    <p>If you believe you have the confidence, discipline and potential to become an ARIYAN model, we would like to hear from you.</p>
+    <a href="model-area.html" class="apply-button">START YOUR APPLICATION →</a>
+</section>
+
+<footer>
+    <div class="footer-brand">ARIYAN</div>
+    <div>© 2026 ARIYAN — MALE MODEL AGENCY</div>
+</footer>
+</body>
+</html>
+```

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Select Model Area | ARIYAN</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #090909;
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+
+.navbar {
+    height: 80px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #222;
+}
+
+.logo {
+    text-decoration: none;
+    color: #fff;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+
+.logo small {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 7px;
+    letter-spacing: 2px;
+    color: #b89b5e;
+    margin-top: 3px;
+}
+
+.back-link {
+    color: #999;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
+}
+
+.back-link:hover {
+    color: #d6b66a;
+}
+
+
+/* MAIN */
+
+.main {
+    min-height: calc(100vh - 80px);
+    padding: 75px 20px 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1050px;
+    text-align: center;
+}
+
+
+/* HEADING */
+
+.eyebrow {
+    color: #c8a75e;
+    font-size: 10px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-size: 52px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    line-height: 1.15;
+}
+
+h1 span {
+    color: #d6b66a;
+}
+
+.gold-line {
+    width: 55px;
+    height: 2px;
+    background: #d6b66a;
+    margin: 25px auto;
+}
+
+.subtitle {
+    max-width: 620px;
+    margin: 0 auto;
+    color: #8f8f8f;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* CARDS */
+
+.options {
+    margin-top: 55px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.option {
+    background: #101010;
+    border: 1px solid #292929;
+    padding: 35px 28px 28px;
+    text-align: left;
+    min-height: 330px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.35s ease;
+    position: relative;
+}
+
+.option:hover {
+    border-color: #9f8347;
+    transform: translateY(-5px);
+    background: #121212;
+}
+
+
+/* CARD TOP */
+
+.option-number {
+    color: #555;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+}
+
+.icon-box {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #4a4a4a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d6b66a;
+    font-size: 18px;
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
+
+.option:hover .icon-box {
+    border-color: #d6b66a;
+    background: #d6b66a;
+    color: #090909;
+}
+
+
+/* CARD TEXT */
+
+.option h2 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    margin-bottom: 13px;
+}
+
+.option p {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.passport {
+    color: #b79a5d;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    line-height: 1.6;
+}
+
+
+/* BUTTON */
+
+.select-button {
+    margin-top: auto;
+    padding-top: 25px;
+}
+
+.select-button a {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    background: #d6b66a;
+    color: #090909;
+
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+
+    border: 1px solid #d6b66a;
+
+    transition: 0.3s ease;
+}
+
+.select-button a i {
+    font-size: 11px;
+    transition: 0.3s ease;
+}
+
+.select-button a:hover {
+    background: transparent;
+    color: #d6b66a;
+}
+
+.select-button a:hover i {
+    transform: translateX(4px);
+}
+
+
+/* NOTE */
+
+.note {
+    margin-top: 35px;
+    color: #555;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid #1c1c1c;
+    text-align: center;
+    padding: 28px 20px;
+    color: #4d4d4d;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        height: 70px;
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .logo small {
+        font-size: 6px;
+    }
+
+    .back-link {
+        font-size: 9px;
+    }
+
+    .main {
+        padding: 55px 18px 45px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    .options {
+        grid-template-columns: 1fr;
+        margin-top: 40px;
+        gap: 15px;
+    }
+
+    .option {
+        min-height: 310px;
+        padding: 28px 22px 22px;
+    }
+
+    .option-number {
+        margin-bottom: 24px;
+    }
+
+    .option h2 {
+        font-size: 22px;
+    }
+
+    .option p {
+        font-size: 12px;
+    }
+
+    .select-button a {
+        min-height: 46px;
+    }
+
+    .note {
+        font-size: 9px;
+        padding: 0 10px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        ARIYAN
+        <small>MALE MODEL AGENCY</small>
+    </a>
+
+    <a href="become-model.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        &nbsp; BACK
+    </a>
+
+</header>
+
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <div class="container">
+
+        <div class="eyebrow">
+            JOIN ARIYAN
+        </div>
+
+        <h1>
+            SELECT YOUR <span>MODEL AREA</span>
+        </h1>
+
+        <div class="gold-line"></div>
+
+        <p class="subtitle">
+            Choose where you are interested in working as a model.
+            This helps ARIYAN understand the opportunities you are
+            looking for.
+        </p>
+
+
+        <!-- OPTIONS -->
+
+        <div class="options">
+
+
+            <!-- BANGLADESH -->
+
+            <div class="option">
+
+                <div class="option-number">
+                    01 / LOCAL
+                </div>
+
+                <div class="icon-box">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <h2>
+                    BANGLADESH
+                </h2>
+
+                <p>
+                    I am interested in modeling opportunities
+                    within Bangladesh.
+                </p>
+
+                <div class="select-button">
+
+                    <a href="package-selection.html?area=bangladesh">
+                        SELECT AREA
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INTERNATIONAL -->
+
+            <div class="option">
+
+                <div class="option-number">
+                    02 / GLOBAL
+                </div>
+
+                <div class="icon-box">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+
+                <h2>
+                    INTERNATIONAL
+                </h2>
+
+                <p>
+                    I am interested in modeling opportunities
+                    outside Bangladesh.
+                </p>
+
+                <span class="passport">
+                    <i class="fa-solid fa-passport"></i>
+                    &nbsp; Valid passport required
+                </span>
+
+                <div class="select-button">
+
+                    <a href="package-selection.html?area=international">
+                        SELECT AREA
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOTH -->
+
+            <div class="option">
+
+                <div class="option-number">
+                    03 / WORLDWIDE
+                </div>
+
+                <div class="icon-box">
+                    <i class="fa-solid fa-earth-americas"></i>
+                </div>
+
+                <h2>
+                    BOTH
+                </h2>
+
+                <p>
+                    I am interested in opportunities both
+                    in Bangladesh and internationally.
+                </p>
+
+                <span class="passport">
+                    <i class="fa-solid fa-passport"></i>
+                    &nbsp; Passport required for international work
+                </span>
+
+                <div class="select-button">
+
+                    <a href="package-selection.html?area=both">
+                        SELECT AREA
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <p class="note">
+            International assignments require a valid passport
+            before accepting international modeling work.
+        </p>
+
+    </div>
+
+</main>
+
+
+
+<footer>
+    © 2022 ARIYAN — MALE MODEL AGENCY
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,685 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Application & Payment Gateway | ARIYAN</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#d4af37;--gold-light:#f0d69a;--line:#262626;--bg-dark:#040404;--card-bg:#0d0d0d}
+body{background:var(--bg-dark);color:#f5f5f5;font-family:Arial,sans-serif;line-height:1.5;overflow-x:hidden}
+#pageLoader{position:fixed;inset:0;background:#060606;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease}
+#pageLoader.fade-out{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{font-size:30px;font-weight:bold;letter-spacing:9px;color:var(--gold);margin-bottom:15px;animation:pulseLoader 1.5s infinite alternate}
+.loader-spinner{width:42px;height:42px;border:3px solid #222;border-top:3px solid var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:12px}
+.loader-text{font-size:10px;color:#888;letter-spacing:2.5px;text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulseLoader{from{opacity:.5}to{opacity:1}}
+header{padding:14px 5%;border-bottom:1px solid #1f1f1f;display:flex;justify-content:space-between;align-items:center;background:#090909;box-shadow:0 2px 10px rgba(0,0,0,.8)}
+.logo{font-size:20px;font-weight:bold;letter-spacing:5px;color:var(--gold)}
+header a{color:#bbb;text-decoration:none;font-size:11px;transition:.3s}
+header a:hover{color:var(--gold)}
+main{width:94%;max-width:880px;margin:auto;padding:22px 0 45px}
+.victory-banner{background:linear-gradient(135deg,#161309,#0a0a0a);border:1px solid #4a3d1c;padding:16px 22px;text-align:center;margin-bottom:16px;box-shadow:0 4px 20px rgba(212,175,55,.12);border-radius:3px}
+.victory-icon{width:58px;height:58px;margin:0 auto 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--gold);color:#050505;border:2px solid var(--gold-light);box-shadow:0 0 0 5px rgba(212,175,55,.12);font-size:28px;animation:glowIcon 2s infinite alternate}
+@keyframes glowIcon{from{box-shadow:0 0 0 4px rgba(212,175,55,.08),0 0 8px rgba(212,175,55,.2)}to{box-shadow:0 0 0 8px rgba(212,175,55,.12),0 0 20px rgba(212,175,55,.45)}}
+.victory-banner h2{font:clamp(18px,3vw,22px) Georgia,serif;color:var(--gold-light);margin-bottom:4px}
+.victory-banner p{font-size:11px;color:#aaa;max-width:700px;margin:auto;line-height:1.5}
+.victory-banner p strong{color:var(--gold)}
+.step-tracker{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:20px;font-size:10px;color:#888}
+.step-item{display:flex;align-items:center;gap:5px}
+.step-item.active{color:var(--gold);font-weight:bold}
+.step-item span{width:20px;height:20px;border-radius:50%;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:9px;border:1px solid #333}
+.step-item.active span{background:var(--gold);color:#000;border-color:var(--gold)}
+.step-line{width:25px;height:1px;background:#333}
+.card{background:var(--card-bg);border:1px solid #262626;margin-bottom:16px;border-radius:3px;box-shadow:0 4px 15px rgba(0,0,0,.6)}
+.card-title{padding:10px 16px;border-bottom:1px solid #1c1c1c;color:var(--gold);font-size:10px;letter-spacing:1.5px;display:flex;align-items:center;gap:7px;background:#090909}
+.card-body{padding:16px}
+.unified-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.info-box-item{background:#060606;border:1px solid #202020;padding:10px 12px;border-radius:2px;min-width:0}
+.info-box-item span{display:block;font-size:9px;color:#777;margin-bottom:3px;letter-spacing:.5px}
+.info-box-item strong{display:block;font-size:11px;color:#ddd;overflow-wrap:anywhere;white-space:pre-wrap}
+.fee-highlight{background:linear-gradient(135deg,#1c180e,#0d0c08);border:1px solid #4a3d1c;padding:12px 16px;margin-top:12px;border-radius:2px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.fee-highlight span{font-size:9px;color:#c6b580;letter-spacing:1.5px}
+.fee-highlight .fee-val{font-size:22px;font-weight:bold;color:#f0d69a;text-align:right}
+.fee-usd{display:block;font-size:12px;font-weight:normal;color:#c6b580}
+.important-notice{background:#141208;border:1px solid #4a3d1c;padding:12px 14px;margin-bottom:16px;font-size:11px;color:#e6cf8b;line-height:1.5;border-left:3px solid var(--gold);border-radius:2px}
+.important-notice strong{color:#fff;display:block;margin-bottom:6px}
+.important-notice p{margin:0;line-height:1.65}
+.methods-stack{display:flex;flex-direction:column;gap:10px}
+.method-card{background:#111;border:1px solid #282828;border-radius:2px;overflow:hidden;transition:.3s}
+.method-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;cursor:pointer;background:#141414}
+.method-header-left{display:flex;align-items:center;gap:12px;min-width:0}
+.method-header i{font-size:18px;color:var(--gold)}
+.method-header strong{font-size:12px;display:block;color:#eee}
+.method-header small{font-size:9px;color:#888;display:block}
+.method-card.active{border-color:var(--gold);background:#18140b}
+.method-body{display:none;padding:16px;border-top:1px solid #222;background:#080808}
+.method-card.active .method-body{display:block}
+.account-box{background:#060606;border:1px solid #282828;padding:12px 16px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;border-radius:2px}
+.account-info{min-width:0}
+.account-info span{display:block;font-size:9px;color:#777;margin-bottom:2px;letter-spacing:1px}
+.account-info-main{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.account-info strong{font-size:14px;color:var(--gold);letter-spacing:1px;overflow-wrap:anywhere}
+.account-badge{font-size:9px;background:#222;color:#c6b580;padding:2px 6px;border:1px solid #444;border-radius:2px;letter-spacing:.5px}
+.copy-btn{flex-shrink:0;background:#181818;color:#fff;border:1px solid #383838;padding:7px 14px;font-size:10px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:.2s;border-radius:2px}
+.copy-btn:hover{background:var(--gold);color:#000;border-color:var(--gold);font-weight:bold}
+.payment-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-group{margin-bottom:12px;min-width:0}
+.form-group label{display:block;font-size:10px;color:#bbb;margin-bottom:5px;letter-spacing:.5px}
+input{width:100%;padding:10px 12px;background:#060606;border:1px solid #303030;color:#fff;font-size:11px;border-radius:2px;transition:.2s}
+input:focus{border-color:var(--gold);outline:none;box-shadow:0 0 6px rgba(212,175,55,.2)}
+.file-upload{border:1px dashed #444;padding:12px;text-align:center;background:#0a0a0a;cursor:pointer;font-size:10px;color:#999;border-radius:2px;transition:.3s}
+.file-upload:hover{border-color:var(--gold);color:#fff}
+.file-upload input{display:none}
+.btn{display:flex;width:100%;min-height:45px;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#080808;border:0;font-size:10px;font-weight:bold;letter-spacing:1.5px;text-decoration:none;cursor:pointer;margin-top:14px;border-radius:2px;transition:.3s}
+.btn:hover{background:var(--gold-light);box-shadow:0 0 12px rgba(212,175,55,.35)}
+.terms{padding-left:16px;color:#999;font-size:9px}
+.terms li{margin:5px 0}
+.empty{font-size:10px;color:#c7ba91;padding:12px;background:#171307;border:1px solid #40371e;border-radius:2px}
+#toastNotification{position:fixed;bottom:20px;right:20px;max-width:calc(100% - 40px);background:var(--gold);color:#000;padding:10px 18px;font-size:10px;font-weight:bold;letter-spacing:1px;border-radius:2px;box-shadow:0 4px 15px rgba(0,0,0,.6);transform:translateY(80px);opacity:0;transition:.3s ease;z-index:99999}
+#toastNotification.show{transform:translateY(0);opacity:1}
+footer{text-align:center;padding:18px 12px;border-top:1px solid #181818;color:#555;font-size:9px;letter-spacing:1px}
+
+@media(max-width:600px){
+  header{padding:13px 15px}
+  .logo{font-size:18px;letter-spacing:4px}
+  main{width:94%;padding-top:16px}
+  .victory-banner{padding:15px 12px}
+  .victory-icon{width:52px;height:52px;font-size:25px}
+  .step-tracker{gap:6px;font-size:9px}
+  .step-item{gap:4px}
+  .step-item span{width:18px;height:18px;flex-shrink:0}
+  .step-line{width:12px;flex-shrink:0}
+  .card-body{padding:12px}
+  .unified-info-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .info-box-item{padding:9px}
+  .fee-highlight{padding:11px;align-items:flex-start}
+  .fee-highlight .fee-val{font-size:19px}
+  .fee-highlight span{line-height:1.6}
+  .method-header{padding:13px 12px}
+  .method-body{padding:11px}
+  .account-box{padding:10px;align-items:flex-start}
+  .account-info strong{font-size:12px}
+  .copy-btn{padding:7px 9px;font-size:9px}
+  .payment-fields{grid-template-columns:1fr;gap:0}
+  #toastNotification{right:12px;bottom:12px}
+}
+</style>
+</head>
+
+<body>
+
+<div hidden id="demo-description">ARIYAN demonstration page only. No real payment is processed or verified. The displayed payment account details are placeholders; do not transfer money to them. Any use of this demo is at the visitor’s own risk.</div>
+
+<div id="pageLoader">
+  <div class="loader-logo">ARIYAN</div>
+  <div class="loader-spinner"></div>
+  <div class="loader-text">LOADING APPLICATION DETAILS...</div>
+</div>
+
+<header>
+  <div class="logo">ARIYAN</div>
+  <a href="index.html"><i class="fa-solid fa-house"></i> HOME</a>
+</header>
+
+<main>
+  <div class="victory-banner">
+    <div class="victory-icon"><i class="fa-solid fa-circle-check"></i></div>
+    <h2>Application Submited</h2>
+    <p>Review your application details and selected package below.</p>
+  </div>
+
+  <div class="step-tracker">
+    <div class="step-item active"><span>1</span> Application</div>
+    <div class="step-line"></div>
+    <div class="step-item active"><span>2</span> Payment</div>
+    <div class="step-line"></div>
+    <div class="step-item"><span>3</span> Final Review</div>
+  </div>
+
+  <section class="card">
+    <div class="card-title"><i class="fa-solid fa-id-card"></i> APPLICATION INFORMATION & SUMMARY</div>
+    <div class="card-body">
+      <div class="unified-info-grid" id="unifiedInfoContainer"></div>
+
+      <div id="missingData" class="empty" hidden style="margin-top:10px">
+        No saved application details found. Please return to the registration form and complete your application.
+      </div>
+
+      <div class="fee-highlight">
+        <span>TOTAL PAYABLE REGISTRATION FEE</span>
+        <div>
+          <div class="fee-val" id="fee">Not available</div>
+          <span class="fee-usd" id="feeUSD"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-title"><i class="fa-solid fa-credit-card"></i> PAYMENT DETAILS</div>
+    <div class="card-body">
+
+      <div class="important-notice">
+        <strong><i class="fa-solid fa-triangle-exclamation"></i> IMPORTANT NOTICE:</strong>
+        <p>Your request has reached us. Please submit your payment information to confirm your request. Once submitted, our admin team will confirm it and share a secret code through the contact information you provided, with which you can register your profile on the website and start working from there.</p>
+        <p lang="bn" style="margin-top:6px">আপনার অনুরোধটি আমাদের কাছে পৌঁছেছে। PAMENT DETAIL জমা দেয়া হয়ে গেলে আমাদের এডমিন টিম সেটা নিশ্চিত করে আপনার দেয়া যোগাযোগ মাধ্যমে একটি সিক্রেট কোড শেয়ার করবেন যেটা দিয়ে আপনি ওয়েবসাইটে আপনার প্রোফাইল রেজিস্ট্রেশন করে নিবেন এরপর থেকে কাজ শুরু করতে পারবেন। পরবর্তীতে আপনি চাইলে আপনার প্রোফাইল ডিটেইল পরিবর্তন করতে পারবেন। </p>
+        
+      </div>
+
+      <div class="methods-stack">
+
+        <div class="method-card" data-method="bKash">
+          <div class="method-header">
+            <div class="method-header-left">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <div>
+                <strong>bKash Payment</strong>
+                <small>Personal / merchant account</small>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-down chevron-icon" style="color:#888;font-size:12px"></i>
+          </div>
+
+          <div class="method-body">
+            <div class="account-box">
+              <div class="account-info">
+                <span>bKash Payment Number</span>
+                <div class="account-info-main">
+                  <strong class="acc-number">01924673277</strong>
+                  <span class="account-badge">PERSONAL</span>
+                </div>
+              </div>
+              <button type="button" class="copy-btn">
+                <i class="fa-regular fa-copy"></i> Copy Number
+              </button>
+            </div>
+
+            <form class="paymentSubmissionForm" data-currency="BDT">
+              <div class="payment-fields">
+                <div class="form-group">
+                  <label>Sender Number *</label>
+                  <input type="tel" class="senderAccount" placeholder="e.g. 017XXXXXXXX" required>
+                </div>
+                <div class="form-group">
+                  <label>Amount Paid (BDT) *</label>
+                  <input type="number" min="1" step="0.01" class="paidAmount" placeholder="Amount paid" required>
+                </div>
+                <div class="form-group">
+                  <label>Pay Time *</label>
+                  <input type="text" class="paymentTime" placeholder="e.g. 03:45 PM" required>
+                </div>
+                <div class="form-group">
+                  <label>Payment Screenshot (Optional)</label>
+                  <label class="file-upload">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload Image
+                    <input type="file" class="paymentScreenshot" accept="image/*">
+                  </label>
+                </div>
+              </div>
+              <button class="btn" type="submit"><i class="fa-solid fa-circle-check"></i> SUBMIT bKash DETAILS</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="method-card" data-method="Nagad">
+          <div class="method-header">
+            <div class="method-header-left">
+              <i class="fa-solid fa-wallet"></i>
+              <div>
+                <strong>Nagad Payment</strong>
+                <small>Personal / merchant account</small>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-down chevron-icon" style="color:#888;font-size:12px"></i>
+          </div>
+
+          <div class="method-body">
+            <div class="account-box">
+              <div class="account-info">
+                <span>Nagad Payment Number</span>
+                <div class="account-info-main">
+                  <strong class="acc-number">01612634288</strong>
+                  <span class="account-badge">PERSONAL</span>
+                </div>
+              </div>
+              <button type="button" class="copy-btn">
+                <i class="fa-regular fa-copy"></i> Copy Number
+              </button>
+            </div>
+
+            <form class="paymentSubmissionForm" data-currency="BDT">
+              <div class="payment-fields">
+                <div class="form-group">
+                  <label>Sender Number *</label>
+                  <input type="tel" class="senderAccount" placeholder="e.g. 018XXXXXXXX" required>
+                </div>
+                <div class="form-group">
+                  <label>Amount Paid (BDT) *</label>
+                  <input type="number" min="1" step="0.01" class="paidAmount" placeholder="Amount paid" required>
+                </div>
+                <div class="form-group">
+                  <label>Pay Time *</label>
+                  <input type="text" class="paymentTime" placeholder="e.g. 03:45 PM" required>
+                </div>
+                <div class="form-group">
+                  <label>Payment Screenshot (Optional)</label>
+                  <label class="file-upload">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload Image
+                    <input type="file" class="paymentScreenshot" accept="image/*">
+                  </label>
+                </div>
+              </div>
+              <button class="btn" type="submit"><i class="fa-solid fa-circle-check"></i> SUBMIT Nagad DETAILS</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="method-card" data-method="Binance">
+          <div class="method-header">
+            <div class="method-header-left">
+              <i class="fa-brands fa-bitcoin"></i>
+              <div>
+                <strong>International / Crypto</strong>
+                <small>USDT Pay Addr. / Wallet</small>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-down chevron-icon" style="color:#888;font-size:12px"></i>
+          </div>
+
+          <div class="method-body">
+            <div class="account-box">
+              <div class="account-info">
+                <span> USDT TRC20 Wallet</span>
+                <div class="account-info-main">
+                  <strong class="acc-number">TEc1YSRgQx1wghAKPCdNESXYeDg5YMYz1S</strong>
+                  <span class="account-badge">USDT</span>
+                </div>
+              </div>
+              <button type="button" class="copy-btn">
+                <i class="fa-regular fa-copy"></i> Copy Address</Address>
+              </button>
+            </div>
+
+            <form class="paymentSubmissionForm" data-currency="USD">
+              <div class="payment-fields">
+                <div class="form-group">
+                  <label>Sender Wallet ID / TxID *</label>
+                  <input type="text" class="senderAccount" placeholder="Wallet Addr. or transaction ID" required>
+                </div>
+                <div class="form-group">
+                  <label>Amount Paid (USD / USDT) *</label>
+                  <input type="number" min="0.01" step="0.01" class="paidAmount" placeholder="Amount paid" required>
+                </div>
+                <div class="form-group">
+                  <label>Pay Time *</label>
+                  <input type="text" class="paymentTime" placeholder="e.g. 03:45 PM" required>
+                </div>
+                <div class="form-group">
+                  <label>Payment Screenshot (Optional)</label>
+                  <label class="file-upload">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload Image
+                    <input type="file" class="paymentScreenshot" accept="image/*">
+                  </label>
+                </div>
+              </div>
+              <button class="btn" type="submit"><i class="fa-solid fa-circle-check"></i> SUBMIT CRYPTO DETAILS</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-title"><i class="fa-solid fa-shield-halved"></i> TERMS & SECURITY</div>
+    <div class="card-body">
+      <ul class="terms">
+        <li>Confirm the recipient account and exact amount before making a transfer.</li>
+        <li>Submitting this form on its own does not verify a payment or grant portal access.</li>
+        <li>Never disclose your PIN, recovery phrase or security codes.</li>
+        <li>Do not send payment until the agency's package terms, fees and payment details are confirmed in writing.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<div id="toastNotification"><i class="fa-solid fa-check-circle"></i> Number copied successfully!</div>
+
+<footer>© 2026 ARIYAN — ALL RIGHTS RESERVED</footer>
+
+<script>
+/* PAGE LOADER + VISIBLE FALLING CONFETTI */
+function startFallingConfetti(){
+  if(typeof confetti !== "function") return;
+
+  const colors = ["#d4af37", "#f0d69a", "#ffffff"];
+  const duration = 4500;
+  const end = Date.now() + duration;
+
+  (function frame(){
+    confetti({
+      particleCount: 5,
+      angle: 270,
+      spread: 45,
+      startVelocity: 2,
+      gravity: 0.85,
+      ticks: 220,
+      scalar: 0.9,
+      origin: { x: Math.random(), y: -0.08 },
+      colors: colors,
+      zIndex: 100000
+    });
+
+    if(Date.now() < end) requestAnimationFrame(frame);
+  })();
+
+  setTimeout(function(){
+    confetti({
+      particleCount: 90,
+      spread: 120,
+      startVelocity: 22,
+      gravity: 0.75,
+      origin: { x: 0.5, y: 0.05 },
+      colors: colors,
+      zIndex: 100000
+    });
+  }, 250);
+}
+
+window.addEventListener("load", function(){
+  setTimeout(function(){
+    const loader = document.getElementById("pageLoader");
+    if(loader) loader.classList.add("fade-out");
+    startFallingConfetti();
+  }, 450);
+});
+
+/* PACKAGE PRICES */
+const USD_TO_BDT = 123.69;
+
+const packages = {
+  "3-days":{name:"3 Days — Beginner",duration:"3 Days",fee:599},
+  "7-days":{name:"7 Days — Fresher",duration:"7 Days",fee:1190},
+  "10-days":{name:"10 Days — Rising Model",duration:"10 Days",fee:1490},
+  "14-days":{name:"14 Days — Premium",duration:"14 Days",fee:1850},
+  "20-days":{name:"20 Days — Advanced",duration:"20 Days",fee:2490},
+  "1-month":{name:"1 Month — Elite",duration:"1 Month",fee:3600},
+  "6-months":{name:"6 Months — Professional",duration:"6 Months",fee:9990},
+  "1-year":{name:"1 Year — Agency Select",duration:"1 Year",fee:30000},
+  "lifetime":{name:"Lifetime — Legacy",duration:"Lifetime",fee:50000}
+};
+
+const areaLabels = {
+  bangladesh:"Bangladesh",
+  international:"International",
+  both:"Bangladesh & International"
+};
+
+const params = new URLSearchParams(window.location.search);
+let applicant = null;
+
+try{
+  applicant = JSON.parse(sessionStorage.getItem("ariyanApplicant") || "null");
+}catch(e){
+  applicant = null;
+}
+
+const packageId = params.get("package") || applicant?.package || "";
+const areaId = params.get("area") || applicant?.area || "";
+const selectedPackage = packages[packageId] || null;
+
+const container = document.getElementById("unifiedInfoContainer");
+const missingData = document.getElementById("missingData");
+
+const money = n => "৳" + Number(n).toLocaleString("en-US");
+const dollars = n => "$" + (Number(n) / USD_TO_BDT).toLocaleString("en-US",{
+  minimumFractionDigits:2,
+  maximumFractionDigits:2
+});
+
+document.getElementById("fee").textContent =
+  selectedPackage ? money(selectedPackage.fee) : "Not available";
+
+document.getElementById("feeUSD").textContent =
+  selectedPackage ? "≈ " + dollars(selectedPackage.fee) + " USD" : "";
+
+function addInfoBox(label,value){
+  const box = document.createElement("div");
+  box.className = "info-box-item";
+
+  const labelElement = document.createElement("span");
+  labelElement.textContent = label;
+
+  const valueElement = document.createElement("strong");
+  valueElement.textContent =
+    value !== null && value !== undefined && String(value).trim()
+      ? String(value)
+      : "Not selected";
+
+  box.append(labelElement,valueElement);
+  container.appendChild(box);
+}
+
+addInfoBox("Work Area",areaLabels[areaId] || "Not selected");
+addInfoBox("Selected Package",selectedPackage?.name || "Not selected");
+addInfoBox("Package Duration",selectedPackage?.duration || "Not available");
+
+const fieldLabels = {
+  full_name:"Full Name",
+  phone:"Phone / WhatsApp",
+  email:"Email",
+  date_of_birth:"Date of Birth",
+  location:"City / Country",
+  gender:"Gender",
+  height:"Height",
+  experience:"Modeling Experience"
+};
+
+let hasApplicantDetails = false;
+
+if(applicant){
+  Object.entries(fieldLabels).forEach(function([key,label]){
+    const value = applicant[key];
+
+    if(value !== null && value !== undefined && String(value).trim()){
+      addInfoBox(label,value);
+      hasApplicantDetails = true;
+    }
+  });
+}
+
+if(!applicant || !hasApplicantDetails){
+  missingData.hidden = false;
+}
+
+/* AUTO-FILL PACKAGE AMOUNT */
+document.querySelectorAll(".paymentSubmissionForm").forEach(function(form){
+  const amountInput = form.querySelector(".paidAmount");
+  if(!selectedPackage || !amountInput) return;
+
+  if(form.dataset.currency === "USD"){
+    amountInput.value = (selectedPackage.fee / USD_TO_BDT).toFixed(2);
+  }else{
+    amountInput.value = selectedPackage.fee;
+  }
+});
+
+/* PAYMENT ACCORDION */
+document.querySelectorAll(".method-header").forEach(function(header){
+  header.addEventListener("click",function(){
+    const card = this.closest(".method-card");
+    const wasActive = card.classList.contains("active");
+
+    document.querySelectorAll(".method-card").forEach(function(item){
+      item.classList.remove("active");
+    });
+
+    if(!wasActive) card.classList.add("active");
+  });
+});
+
+/* TOAST MESSAGE */
+let toastTimer;
+
+function showToast(message){
+  const toast = document.getElementById("toastNotification");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){
+    toast.classList.remove("show");
+  },2500);
+}
+
+/* COPY PAYMENT ACCOUNT */
+document.querySelectorAll(".copy-btn").forEach(function(btn){
+  btn.addEventListener("click",async function(){
+    const cardBody = this.closest(".method-body");
+    const numberText = cardBody.querySelector(".acc-number").textContent.trim();
+
+    try{
+      await navigator.clipboard.writeText(numberText);
+      showToast("Copied successfully!");
+
+      const original = this.innerHTML;
+      this.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+
+      setTimeout(()=>{
+        this.innerHTML = original;
+      },1800);
+    }catch(e){
+      showToast("Copy unavailable. Please copy manually.");
+    }
+  });
+});
+
+/*
+  SUBMIT HANDLER
+  Opens a confirmation-style page in the current tab.
+  This demo does not send data to a server or verify payment.
+*/
+document.querySelectorAll(".paymentSubmissionForm").forEach(function(form){
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+
+    if(!selectedPackage){
+      alert("No valid package was selected. Please return to package selection.");
+      return;
+    }
+
+    const sender = this.querySelector(".senderAccount").value.trim();
+    const amount = Number(this.querySelector(".paidAmount").value);
+    const time = this.querySelector(".paymentTime").value.trim();
+
+    if(!sender || !Number.isFinite(amount) || amount <= 0 || !time){
+      alert("Please enter valid payment details.");
+      return;
+    }
+
+    const currency = this.dataset.currency === "USD" ? "USD / USDT" : "BDT";
+    const method = this.closest(".method-card").dataset.method || "Payment";
+
+    function safe(value){
+      return String(value).replace(/[&<>"']/g,function(char){
+        return {
+          "&":"&amp;",
+          "<":"&lt;",
+          ">":"&gt;",
+          '"':"&quot;",
+          "'":"&#39;"
+        }[char];
+      });
+    }
+
+    document.title = "Request Confirmation | ARIYAN";
+
+    document.body.innerHTML = `
+      <style>
+        body{background:#040404;color:#f5f5f5;font-family:Arial,sans-serif;margin:0;min-height:100vh;line-height:1.6}
+        .confirmation-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;box-sizing:border-box;background:radial-gradient(ellipse at top,#211b0b 0%,#040404 58%)}
+        .confirmation-card{width:100%;max-width:560px;padding:35px 25px;box-sizing:border-box;text-align:center;background:#0c0c0c;border:1px solid #4a3d1c;border-radius:5px;box-shadow:0 10px 45px rgba(212,175,55,.10);animation:appear .6s ease}
+        @keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+        .success-icon{width:76px;height:76px;margin:0 auto 22px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#d4af37;color:#050505;font-size:36px;box-shadow:0 0 0 8px rgba(212,175,55,.10)}
+        .brand{color:#d4af37;font-size:19px;font-weight:bold;letter-spacing:7px;margin-bottom:26px}
+        .confirmation-card h1{color:#f0d69a;font-family:Georgia,serif;font-size:clamp(23px,5vw,31px);line-height:1.35;margin:0 0 16px}
+        .message{color:#c8c8c8;font-size:14px;line-height:1.9;margin:0 auto 18px}
+        .contact-box{text-align:left;background:#080808;border:1px solid #292929;padding:17px;margin:22px 0;border-radius:3px}
+        .contact-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #222;font-size:12px}
+        .contact-row:last-child{border-bottom:0}
+        .contact-row span{color:#888}
+        .contact-row strong{color:#f0d69a;text-align:right;overflow-wrap:anywhere}
+        .notice{color:#a99e7a;background:#141208;border-left:3px solid #d4af37;padding:12px;text-align:left;font-size:10px;line-height:1.8;margin-top:20px}
+        .notice strong{color:#e5cf8c}
+        .home-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:0 24px;margin-top:22px;box-sizing:border-box;background:#d4af37;color:#080808;font-weight:bold;font-size:11px;letter-spacing:1px;text-decoration:none;border-radius:2px}
+        .home-btn:hover{background:#f0d69a}
+        .footer{margin-top:27px;color:#555;font-size:9px;letter-spacing:1px}
+        @media(max-width:420px){.confirmation-card{padding:28px 17px}.contact-row{font-size:11px}}
+      </style>
+
+      <main class="confirmation-page">
+        <section class="confirmation-card">
+          <div class="brand">ARIYAN</div>
+          <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+
+          <h1>Request Confirmation</h1>
+
+          <p class="message">
+            Thank you for submitting your request. Our team will review
+            the information you provided and contact you within a maximum
+            of <strong style="color:#f0d69a">3 business days</strong>
+            regarding the next steps.
+          </p>
+
+          <p class="message" lang="bn">
+            আপনার অনুরোধের তথ্য জমা দেওয়ার জন্য ধন্যবাদ।
+            পরবর্তী পদক্ষেপ সম্পর্কে সর্বোচ্চ
+            <strong style="color:#f0d69a">৩ কর্মদিবসের মধ্যে</strong>
+            আমাদের টিম আপনার সঙ্গে যোগাযোগ করবে।
+          </p>
+
+          <div class="contact-box">
+            <div class="contact-row">
+              <span>Selected Package</span>
+              <strong>${safe(selectedPackage.name)}</strong>
+            </div>
+
+            <div class="contact-row">
+              <span>Payment Method</span>
+              <strong>${safe(method)}</strong>
+            </div>
+
+            <div class="contact-row">
+              <span>Entered Amount</span>
+              <strong>${safe(amount.toLocaleString("en-US"))} ${safe(currency)}</strong>
+            </div>
+
+            <div class="contact-row">
+              <span>Request Status</span>
+              <strong>Awaiting Review</strong>
+            </div>
+          </div>
+  
+       
+
+          <a class="home-btn" href="index.html">
+            <i class="fa-solid fa-house"></i> BACK TO HOME
+          </a>
+
+          <div class="footer">© 2026 ARIYAN — ALL RIGHTS RESERVED</div>
+        </section>
+      </main>
+    `;
+  });
+});
+</script>
+
+</body>
+</html>

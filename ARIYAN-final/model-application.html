@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>Model Application | ARIYAN</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --gold: #d4af37;
+  --gold-light: #f0d69a;
+  --bg: #080808;
+  --panel: #101010;
+  --input: #0a0a0a;
+  --line: #303030;
+  --muted: #999;
+  --white: #f5f5f5;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+header {
+  min-height: 70px;
+  padding: 15px 5%;
+  border-bottom: 1px solid #292929;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  background: #090909;
+}
+.logo {
+  color: var(--gold);
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: 5px;
+}
+.back-link {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.back-link:hover {
+  color: var(--gold);
+}
+main {
+  width: 92%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 36px 0 55px;
+}
+.hero {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.eyebrow {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(29px, 5vw, 42px);
+  line-height: 1.2;
+  font-weight: 400;
+  margin: 12px 0;
+}
+.intro {
+  color: var(--muted);
+  font-size: 13px;
+  max-width: 440px;
+  margin: 0 auto;
+}
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+.progress-line {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+}
+.progress-step {
+  width: 27px;
+  height: 27px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 11px;
+}
+.progress-step.active {
+  color: #080808;
+  background: var(--gold);
+  font-weight: bold;
+}
+.summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 17px;
+  margin-bottom: 22px;
+  background: linear-gradient(120deg, #1c190f, #12110d);
+  border: 1px solid #4b3d24;
+  border-radius: 5px;
+}
+.summary-icon {
+  color: var(--gold);
+  font-size: 18px;
+  padding-top: 2px;
+}
+.summary-label {
+  color: var(--gold-light);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+#selectionSummary {
+  color: #e6e0d1;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.section {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+.section-title {
+  min-height: 53px;
+  padding: 15px 19px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1.3px;
+}
+.section-number {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #514323;
+  border-radius: 3px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 10px;
+}
+.section-body {
+  padding: 21px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 19px 16px;
+}
+.field {
+  min-width: 0;
+}
+.field.full {
+  grid-column: 1 / -1;
+}
+label {
+  display: block;
+  color: #d5d5d5;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.required {
+  color: var(--gold);
+}
+.optional {
+  color: #888;
+  font-size: 10px;
+  font-weight: normal;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 12px 13px;
+  background: var(--input);
+  color: var(--white);
+  border: 1px solid #3a3a3a;
+  border-radius: 3px;
+  font: 13px Arial, Helvetica, sans-serif;
+  transition: border-color 0.2s, background 0.2s;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #686868;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: #0e0e0e;
+}
+input[type="date"] {
+  color-scheme: dark;
+}
+input[type="file"] {
+  padding: 9px;
+  font-size: 11px;
+  cursor: pointer;
+}
+input[type="file"]::file-selector-button {
+  background: #262219;
+  color: var(--gold-light);
+  border: 1px solid #554729;
+  padding: 7px 10px;
+  margin-right: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+textarea {
+  min-height: 105px;
+  resize: vertical;
+}
+.hint {
+  color: #858585;
+  font-size: 10px;
+  line-height: 1.6;
+  margin-top: 7px;
+}
+.photo-note {
+  border-left: 2px solid var(--gold);
+  background: #17150f;
+  color: #aaa;
+  padding: 12px 14px;
+  font-size: 11px;
+  margin-top: 17px;
+}
+.photo-note i {
+  color: var(--gold);
+  margin-right: 7px;
+}
+.checkline {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  color: #bcbcbc;
+  font-size: 11px;
+  line-height: 1.8;
+  cursor: pointer;
+}
+.checkline input {
+  width: 17px;
+  min-width: 17px;
+  height: 17px;
+  min-height: 17px;
+  margin-top: 3px;
+  padding: 0;
+  accent-color: var(--gold);
+  flex-shrink: 0;
+}
+.notice {
+  color: #858585;
+  font-size: 10px;
+  margin-top: 15px;
+  line-height: 1.7;
+}
+.submit-button {
+  width: 100%;
+  min-height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  color: #080808;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-top: 22px;
+  padding: 14px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.submit-button:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+}
+.footer-note {
+  text-align: center;
+  color: #777;
+  font-size: 10px;
+  margin-top: 23px;
+}
+@media (max-width: 600px) {
+  header {
+    min-height: 62px;
+    padding: 13px 5%;
+  }
+  .logo {
+    font-size: 20px;
+    letter-spacing: 4px;
+  }
+  .back-link {
+    font-size: 10px;
+  }
+  main {
+    width: 92%;
+    padding: 27px 0 35px;
+  }
+  .hero {
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-size: 31px;
+  }
+  .intro {
+    font-size: 12px;
+  }
+  .section-title {
+    padding: 13px 14px;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+  .section-body {
+    padding: 16px 14px;
+  }
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .field.full {
+    grid-column: auto;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 14px;
+  }
+  .summary {
+    padding: 14px;
+  }
+  .submit-button {
+    font-size: 10px;
+    padding: 13px 9px;
+  }
+}
+@media (max-width: 360px) {
+  .logo {
+    font-size: 18px;
+    letter-spacing: 3px;
+  }
+  .back-link {
+    gap: 5px;
+    font-size: 9px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">ARIYAN</div>
+  <a class="back-link" href="package-selection.html">
+    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+    PACKAGES
+  </a>
+</header>
+<main>
+  <div class="hero">
+    <div class="eyebrow">ARIYAN MODEL REGISTRATION</div>
+    <h1>Model Application</h1>
+    <p class="intro">
+      Complete your profile carefully to proceed with your model registration.
+    </p>
+    <div class="progress" aria-label="Application progress">
+      <div class="progress-step active">1</div>
+      <div class="progress-line"></div>
+      <div class="progress-step">2</div>
+      <div class="progress-line"></div>
+      <div class="progress-step">3</div>
+    </div>
+  </div>
+  <div class="summary">
+    <div class="summary-icon">
+      <i class="fa-regular fa-clipboard" aria-hidden="true"></i>
+    </div>
+    <div>
+      <div class="summary-label">YOUR SELECTION</div>
+      <div id="selectionSummary" aria-live="polite">Loading selection...</div>
+    </div>
+  </div>
+  <form id="applicationForm">
+    <!-- SECTION 01 -->
+    <section class="section">
+      <div class="section-title">
+        <span class="section-number">01</span>
+        PERSONAL INFORMATION
+      </div>
+      <div class="section-body grid">
+        <div class="field full">
+          <label for="full_name">Full Name <span class="required">*</span></label>
+          <input id="full_name" name="full_name" autocomplete="name"
+                 placeholder="Enter your full name" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone / WhatsApp <span class="required">*</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel"
+                 placeholder="Your phone number" required>
+        </div>
+        <div class="field">
+          <label for="email">Email <span class="optional">(Optional)</span></label>
+          <input id="email" name="email" type="email" autocomplete="email"
+                 placeholder="name@example.com">
+        </div>
+        <div class="field">
+          <label for="date_of_birth">Date of Birth <span class="required">*</span></label>
+          <input id="date_of_birth" name="date_of_birth" type="date"
+                 autocomplete="bday" required>
+        </div>
+        <div class="field">
+          <label for="location">City / Country <span class="required">*</span></label>
+          <input id="location" name="location" autocomplete="country-name"
+                 placeholder="e.g. Dhaka, Bangladesh" required>
+        </div>
+        <div class="field full">
+          <label for="gender">Gender <span class="optional">(Optional)</span></label>
+          <select id="gender" name="gender">
+            <option value="">Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+            <option value="Prefer not to say">Prefer not to say</option>
+          </select>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION 02 -->
+    <section class="section">
+      <div class="section-title">
+        <span class="section-number">02</span>
+        MODEL PROFILE & MEASUREMENTS
+      </div>
+      <div class="section-body grid">
+        <div class="field">
+          <label for="height">Height <span class="required">*</span></label>
+          <input id="height" name="height" placeholder="e.g. 175 cm" required>
+        </div>
+        <div class="field">
+          <label for="chest">Chest Size <span class="required">*</span></label>
+          <input id="chest" name="chest" placeholder="e.g. 90 cm" required>
+        </div>
+        <div class="field">
+          <label for="waist">Waist Size <span class="required">*</span></label>
+          <input id="waist" name="waist" placeholder="e.g. 76 cm" required>
+        </div>
+        <div class="field">
+          <label for="finger_size">Finger Size <span class="optional">(Optional)</span></label>
+          <input id="finger_size" name="finger_size"
+                 placeholder="e.g. Ring size 9 or 19 mm">
+          <p class="hint">Mention your ring size or finger circumference, if known.</p>
+        </div>
+        <div class="field">
+          <label for="shoe_size">Shoe Size <span class="optional">(Optional)</span></label>
+          <input id="shoe_size" name="shoe_size" placeholder="e.g. EU 42">
+        </div>
+        <div class="field">
+          <label for="skin_tone">Skin Tone <span class="required">*</span></label>
+          <select id="skin_tone" name="skin_tone" required>
+            <option value="">Select Skin Tone</option>
+            <option value="Fair">Fair / ফর্সা</option>
+            <option value="Light Brown">Light Brown / হালকা শ্যামলা</option>
+            <option value="Medium Brown">Medium Brown / শ্যামলা</option>
+            <option value="Dark Brown">Dark Brown / গাঢ় শ্যামলা</option>
+            <option value="Dark">Dark / কালো</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="experience">Modeling Experience <span class="required">*</span></label>
+          <select id="experience" name="experience" required>
+            <option value="">Select experience</option>
+            <option>Beginner — No experience</option>
+            <option>Some experience</option>
+            <option>Experienced model</option>
+            <option>Professional model</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="front_photo">Front-view Photo <span class="required">*</span></label>
+          <input id="front_photo" name="front_photo" type="file"
+                 accept="image/jpeg,image/png,image/webp" required>
+          <p class="hint">
+            Upload a clear, recent front-view photo in JPG, PNG or WebP format.
+          </p>
+        </div>
+        <div class="field">
+          <label for="back_photo">Back-view Photo <span class="optional">(Optional)</span></label>
+          <input id="back_photo" name="back_photo" type="file"
+                 accept="image/jpeg,image/png,image/webp">
+        </div>
+        <div class="field">
+          <label for="arm_photo">Arm Photo <span class="optional">(Optional)</span></label>
+          <input id="arm_photo" name="arm_photo" type="file"
+                 accept="image/jpeg,image/png,image/webp">
+        </div>
+        <div class="field full">
+          <div class="photo-note">
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            Use recent, clear and appropriate photos. Avoid filters that significantly change your appearance.
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION 03 -->
+    <section class="section">
+      <div class="section-title">
+        <span class="section-number">03</span>
+        ALTERNATIVE CONTACT
+      </div>
+      <div class="section-body grid">
+        <div class="field">
+          <label for="alternative_platform">
+            Platform <span class="optional">(Optional)</span>
+          </label>
+          <select id="alternative_platform" name="alternative_platform">
+            <option value="">Select platform</option>
+            <option>Facebook</option>
+            <option>WhatsApp</option>
+            <option>Instagram</option>
+            <option>Telegram</option>
+            <option>IMO</option>
+            <option>Messenger</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="alternative_contact">
+            Profile Link / Contact <span class="optional">(Optional)</span>
+          </label>
+          <input id="alternative_contact" name="alternative_contact"
+                 placeholder="Profile URL or contact">
+        </div>
+      </div>
+    </section>
+    <!-- SECTION 04 -->
+    <section class="section">
+      <div class="section-title">
+        <span class="section-number">04</span>
+        PREFERRED CONTACT METHOD
+      </div>
+      <div class="section-body grid">
+        <div class="field full">
+          <label for="contact_method">
+            How should ARIYAN contact you? <span class="required">*</span>
+          </label>
+          <select id="contact_method" name="contact_method" required>
+            <option value="">Select contact method</option>
+            <option value="WhatsApp">WhatsApp</option>
+            <option value="Telegram">Telegram</option>
+            <option value="IMO">IMO</option>
+            <option value="Messenger">Messenger</option>
+            <option value="Personal SMS">Personal SMS</option>
+            <option value="Email">Email</option>
+            <option value="Direct Phone Call">Direct Phone Call</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="preferred_contact_details">
+            Contact Details for Selected Method <span class="required">*</span>
+          </label>
+          <input id="preferred_contact_details"
+                 name="preferred_contact_details"
+                 type="text"
+                 placeholder="Select a contact method first"
+                 autocomplete="off"
+                 required>
+          <p class="hint" id="contactHint">
+            Enter the phone number, email address or profile link used for your selected method.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION 05 -->
+    <section class="section">
+      <div class="section-title">
+        <span class="section-number">05</span>
+        ABOUT YOU
+      </div>
+      <div class="section-body">
+        <label for="about">
+          Tell Us About Yourself <span class="optional">(Optional)</span>
+        </label>
+        <textarea id="about" name="about"
+                  placeholder="Share your interests, skills and modeling goals..."></textarea>
+      </div>
+    </section>
+    <!-- CONSENT & SUBMISSION -->
+    <section class="section">
+      <div class="section-body">
+        <label class="checkline">
+          <input type="checkbox" name="consent" value="yes" required>
+          <span>
+            I confirm that the information I provided is accurate and agree to be contacted regarding this application.
+          </span>
+        </label>
+        <p class="notice">
+          For your security, never provide passwords, PINs, OTPs or account recovery codes in this form.
+        </p>
+        <button class="submit-button" type="submit">
+          CONTINUE TO APPLICATION SUMMARY
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </section>
+  </form>
+  <p class="footer-note">
+    ARIYAN MODEL REGISTRATION · Please review your details before continuing.
+  </p>
+</main>
+<script>
+const params = new URLSearchParams(window.location.search);
+const areaLabels = {
+  bangladesh: "Bangladesh",
+  international: "International",
+  both: "Bangladesh & International"
+};
+const packageLabels = {
+  "3-days": "3 Days — Beginner",
+  "7-days": "7 Days — Fresher",
+  "10-days": "10 Days — Rising Model",
+  "14-days": "14 Days — Premium",
+  "20-days": "20 Days — Advanced",
+  "1-month": "1 Month — Elite",
+  "6-months": "6 Months — Professional",
+  "1-year": "1 Year — Agency Select",
+  "lifetime": "Lifetime — Legacy"
+};
+const area = params.get("area") || "";
+const packageId = params.get("package") || "";
+document.getElementById("selectionSummary").textContent =
+  (areaLabels[area] || "Area not selected") + " | " +
+  (packageLabels[packageId] || "Package not selected");
+const contactMethod = document.getElementById("contact_method");
+const contactDetails = document.getElementById("preferred_contact_details");
+const contactHint = document.getElementById("contactHint");
+contactMethod.addEventListener("change", function () {
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  contactDetails.value = "";
+  contactDetails.type = this.value === "Email" ? "email" : "text";
+  const placeholders = {
+    "WhatsApp": "Enter your WhatsApp number",
+    "Telegram": "Enter your Telegram username or profile link",
+    "IMO": "Enter your IMO number",
+    "Messenger": "Enter your Messenger profile link",
+    "Personal SMS": "Enter your mobile number",
+    "Email": "Enter your email address",
+    "Direct Phone Call": "Enter your phone number"
+  };
+  const hints = {
+    "WhatsApp": "Enter the number registered with WhatsApp.",
+    "Telegram": "Enter your Telegram username or profile link.",
+    "IMO": "Enter the number registered with IMO.",
+    "Messenger": "Enter your Messenger profile link.",
+    "Personal SMS": "Enter the mobile number where you receive SMS.",
+    "Email": "Enter a valid email address.",
+    "Direct Phone Call": "Enter a phone number where you can receive calls."
+  };
+  contactDetails.placeholder =
+    placeholders[this.value] || "Enter your contact details";
+  contactHint.textContent =
+    hints[this.value] ||
+    "Enter the contact details for your selected method.";
+  if (this.value === "Email" && email) {
+    contactDetails.value = email;
+  } else if (
+    ["WhatsApp", "IMO", "Personal SMS", "Direct Phone Call"].includes(this.value) &&
+    phone
+  ) {
+    contactDetails.value = phone;
+  }
+});
+document.getElementById("applicationForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+  if (!this.reportValidity()) {
+    return;
+  }
+  const frontPhoto = document.getElementById("front_photo").files[0];
+  if (frontPhoto && frontPhoto.size > 5 * 1024 * 1024) {
+    alert("Your front-view photo must be 5 MB or smaller.");
+    return;
+  }
+  const optionalPhotos = [
+    document.getElementById("back_photo").files[0],
+    document.getElementById("arm_photo").files[0]
+  ];
+  if (optionalPhotos.some(file => file && file.size > 5 * 1024 * 1024)) {
+    alert("Each optional photo must be 5 MB or smaller.");
+    return;
+  }
+  const applicant = {};
+  this.querySelectorAll("input, select, textarea").forEach(function (field) {
+    if (!field.name) return;
+    if (field.type === "file" || field.name === "consent") return;
+    if (field.type === "checkbox" && !field.checked) return;
+    applicant[field.name] = field.value.trim();
+  });
+  applicant.area = area;
+  applicant.package = packageId;
+  try {
+    sessionStorage.setItem("ariyanApplicant", JSON.stringify(applicant));
+    if (!sessionStorage.getItem("ariyanApplicant")) {
+      throw new Error("Unable to save application details.");
+    }
+    window.location.href = "application-submitted.html";
+  } catch (error) {
+    alert("Unable to continue. Please try again.");
+    console.error("ARIYAN application error:", error);
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Package | ARIYAN</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --gold:#d4af37;
+  --bg:#090909;
+  --panel:#111;
+  --line:#292929;
+  --muted:#999;
+}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:15px;
+}
+
+body{
+  background:var(--bg);
+  color:#fff;
+  font-family:Arial,sans-serif;
+}
+
+.navbar{
+  min-height:65px;
+  padding:0 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--line);
+}
+
+.logo{
+  font-size:23px;
+  font-weight:bold;
+  letter-spacing:5px;
+  color:var(--gold);
+}
+
+.navbar a{
+  color:#ccc;
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.navbar a:hover{color:var(--gold)}
+
+.hero{
+  text-align:center;
+  padding:38px 15px 25px;
+}
+
+.eyebrow{
+  font-size:10px;
+  color:var(--gold);
+  letter-spacing:3px;
+  margin-bottom:12px;
+  font-weight:bold;
+}
+
+h1{
+  font-family:Georgia,serif;
+  font-size:clamp(28px,4vw,39px);
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:#999;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.area{
+  display:inline-block;
+  margin-top:14px;
+  padding:8px 13px;
+  border:1px solid #42371b;
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.container{
+  width:94%;
+  max-width:1200px;
+  margin:0 auto 50px;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin:15px 0;
+}
+
+.section-title h2{
+  font-size:15px;
+  letter-spacing:2px;
+}
+
+.section-title p{
+  font-size:12px;
+  color:#888;
+}
+
+/* CATEGORY */
+
+.category{
+  border:1px solid #40371e;
+  background:#0d0d0d;
+  margin-bottom:20px;
+}
+
+.category-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:15px 18px;
+  background:#15130c;
+  border-bottom:1px solid #40371e;
+}
+
+.category-name{
+  font-size:14px;
+  letter-spacing:2px;
+  color:var(--gold);
+  font-weight:bold;
+}
+
+.category-desc{
+  font-size:12px;
+  color:#999;
+  margin-top:5px;
+  line-height:1.5;
+}
+
+.category-tag{
+  font-size:11px;
+  color:#111;
+  background:var(--gold);
+  padding:9px 12px;
+  white-space:nowrap;
+  font-weight:bold;
+  letter-spacing:1px;
+  border:0;
+  cursor:pointer;
+}
+
+.category-tag:hover{background:#f0cc55}
+
+.subcards{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  padding:12px;
+  align-items:stretch;
+}
+
+/* PACKAGE CARD */
+
+.package-card{
+  min-width:0;
+  background:#111;
+  border:1px solid #303030;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  align-self:stretch;
+  scroll-margin-top:15px;
+}
+
+.package-card:hover{border-color:#9a7d2d}
+.package-card.featured{border-color:#8b732c}
+
+.card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-bottom:9px;
+}
+
+.level{
+  font-size:11px;
+  color:var(--gold);
+  font-weight:bold;
+  letter-spacing:1.5px;
+}
+
+.duration{
+  font-family:Georgia,serif;
+  font-size:28px;
+  margin-bottom:6px;
+}
+
+.tagline{
+  font-size:13px;
+  color:#999;
+  line-height:1.6;
+  margin-bottom:14px;
+}
+
+/*
+  METRIC GRID
+  Each card uses six grid units.
+  Income gets four units.
+  Other metrics get two units each.
+*/
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  grid-auto-flow:row;
+  align-items:stretch;
+  border-top:1px solid #292929;
+  border-left:1px solid #292929;
+  margin-bottom:14px;
+}
+
+.metric{
+  grid-column:span 2;
+  min-width:0;
+  height:100%;
+  padding:12px 9px;
+  border-right:1px solid #292929;
+  border-bottom:1px solid #292929;
+  overflow-wrap:anywhere;
+}
+
+/* Wider space for long income information */
+.metric.metric-income{
+  grid-column:span 4;
+}
+
+/* Consistent text styling */
+
+.metric-label{
+  font-size:10px;
+  letter-spacing:.5px;
+  color:#999;
+  line-height:1.5;
+  margin-bottom:6px;
+  overflow-wrap:anywhere;
+}
+
+.metric-value{
+  font-size:14px;
+  color:#eee;
+  font-weight:bold;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+.metric-value.gold{color:var(--gold)}
+
+.metric-note{
+  font-size:11px;
+  color:#888;
+  line-height:1.5;
+  margin-top:4px;
+  overflow-wrap:anywhere;
+}
+
+.fee-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  background:#1b180d;
+  border:1px solid #40371e;
+  padding:12px 13px;
+  margin-top:auto;
+  margin-bottom:11px;
+}
+
+.fee-label{
+  font-size:11px;
+  color:#c3b276;
+  line-height:1.6;
+}
+
+.fee-price{
+  font-size:21px;
+  color:var(--gold);
+  font-weight:bold;
+  text-align:right;
+  line-height:1.4;
+}
+
+.fee-usd{
+  display:block;
+  font-size:12px;
+  color:#e0d3a7;
+  font-weight:normal;
+  white-space:normal;
+}
+
+.select-btn{
+  min-height:43px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:9px;
+  background:var(--gold);
+  color:#080808;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:1px;
+  padding:11px;
+  text-align:center;
+}
+
+.select-btn:hover{background:#f0cc55}
+
+.badge{
+  font-size:10px;
+  color:var(--gold);
+  border:1px solid #4b4022;
+  padding:6px 8px;
+  white-space:nowrap;
+}
+
+/* WIDE PACKAGE CARDS */
+
+.wide-list{
+  display:grid;
+  gap:12px;
+}
+
+.wide-card{
+  display:grid;
+  grid-template-columns:165px minmax(0,1fr);
+  background:#101010;
+  border:1px solid #2d2d2d;
+  scroll-margin-top:15px;
+}
+
+.wide-card:hover{border-color:#8b732c}
+
+.wide-summary{
+  padding:18px;
+  border-right:1px solid #292929;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.wide-summary .duration{font-size:27px}
+.wide-summary .tagline{margin:0}
+
+.wide-content{
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
+.wide-content .metrics{
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  align-items:stretch;
+  margin-bottom:13px;
+}
+
+.wide-content .metric{
+  padding:12px 8px;
+}
+
+.wide-content .metric-income{
+  grid-column:span 4;
+}
+
+.wide-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.wide-bottom .fee-row{
+  margin:0;
+  flex:1;
+  max-width:330px;
+}
+
+.wide-bottom .select-btn{min-width:190px}
+
+.disclaimer{
+  color:#888;
+  font-size:12px;
+  line-height:1.8;
+  margin-top:22px;
+}
+
+.disclaimer strong{color:#ccc}
+
+footer{
+  text-align:center;
+  border-top:1px solid #222;
+  padding:20px;
+  color:#666;
+  font-size:10px;
+  letter-spacing:2px;
+}
+
+/* TABLET */
+
+@media(max-width:900px){
+  .wide-card{
+    grid-template-columns:140px minmax(0,1fr);
+  }
+
+  .wide-content .metric{
+    padding:10px 7px;
+  }
+
+  .wide-bottom .select-btn{min-width:160px}
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+  .navbar{
+    min-height:58px;
+    padding:0 15px;
+  }
+
+  .logo{
+    font-size:19px;
+    letter-spacing:4px;
+  }
+
+  .navbar a{font-size:10px}
+
+  .hero{padding:32px 15px 20px}
+
+  .hero p{
+    max-width:360px;
+    margin:auto;
+    font-size:13px;
+  }
+
+  .container{
+    width:95%;
+    margin-bottom:35px;
+  }
+
+  .section-title{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:5px;
+  }
+
+  .section-title h2{font-size:14px}
+  .section-title p{font-size:12px}
+
+  .category-head{
+    padding:13px;
+    align-items:center;
+  }
+
+  .category-name{font-size:12px}
+  .category-desc{font-size:12px}
+
+  .category-tag{
+    font-size:10px;
+    padding:9px 10px;
+  }
+
+  .subcards{
+    grid-template-columns:1fr;
+    padding:9px;
+    gap:10px;
+  }
+
+  .package-card{padding:15px}
+
+  .card-top{margin-bottom:8px}
+  .duration{font-size:26px}
+
+  .tagline{
+    font-size:13px;
+    margin-bottom:12px;
+  }
+
+  .metrics{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    align-items:stretch;
+    margin-bottom:12px;
+  }
+
+  .metric{
+    grid-column:span 2;
+    padding:10px 8px;
+  }
+
+  .metric.metric-income{
+    grid-column:span 4;
+  }
+
+  .metric-label{font-size:10px}
+  .metric-value{font-size:13px}
+  .metric-note{font-size:11px}
+
+  .fee-row{padding:11px 12px}
+  .fee-label{font-size:11px}
+  .fee-price{font-size:20px}
+  .fee-usd{font-size:12px}
+
+  .select-btn{
+    min-height:44px;
+    font-size:10px;
+  }
+
+  /* Wide cards on mobile */
+
+  .wide-card{
+    grid-template-columns:1fr;
+  }
+
+  .wide-summary{
+    border-right:0;
+    border-bottom:1px solid #292929;
+    padding:14px;
+  }
+
+  .wide-summary .duration{
+    font-size:25px;
+    margin-bottom:4px;
+  }
+
+  .wide-content{padding:11px}
+
+  .wide-content .metrics{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    align-items:stretch;
+  }
+
+  .wide-content .metric{
+    grid-column:span 2;
+    padding:10px 8px;
+  }
+
+  .wide-content .metric-income{
+    grid-column:span 4;
+  }
+
+  .wide-bottom{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .wide-bottom .fee-row{max-width:none}
+
+  .wide-bottom .select-btn{
+    width:100%;
+    min-width:0;
+  }
+
+  .disclaimer{
+    padding:0 3px;
+    font-size:11px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="logo">ARIYAN</div>
+  <a href="model-area.html">
+    <i class="fa-solid fa-arrow-left"></i> CHANGE AREA
+  </a>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">YOUR MODELING JOURNEY</div>
+  <h1>CHOOSE YOUR PACKAGE</h1>
+  <p>Compare the details and choose the package that suits you.</p>
+  <div class="area">
+    MODEL AREA: <span id="areaName">NOT SELECTED</span>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="section-title">
+    <h2>AVAILABLE PACKAGES</h2>
+    <p>All prices are shown in BDT and approximate USD.</p>
+  </div>
+
+  <section class="category">
+    <div class="category-head">
+      <div>
+        <div class="category-name">BEGINNER / FRESHER</div>
+        <div class="category-desc">
+          For new models starting their journey.
+        </div>
+      </div>
+
+      <button class="category-tag" id="startHereButton" type="button">
+        START HERE <i class="fa-solid fa-arrow-down"></i>
+      </button>
+    </div>
+
+    <div class="subcards" id="starterCards"></div>
+  </section>
+
+  <div class="section-title" id="growthHeading">
+    <h2>GROW YOUR PROFILE</h2>
+    <p>Longer packages for different career goals.</p>
+  </div>
+
+  <section class="wide-list" id="wideCards"></section>
+
+  <div class="disclaimer">
+    <strong>Please note:</strong>
+    Earnings and job numbers are estimates or targets, not guarantees.
+    Actual work depends on client demand, model selection and availability.
+    Agency commission and media / registration fees should be confirmed in a written agreement before payment.
+    A package does not guarantee income or a fixed number of jobs.
+    Each job is estimated at an average of 4 hours; actual hours may vary.
+    USD amounts are approximate and depend on the exchange rate.
+  </div>
+
+</main>
+
+<footer>© 2026 ARIYAN — ALL RIGHTS RESERVED</footer>
+
+<script>
+/* EDITABLE SETTINGS */
+
+const USD_TO_BDT = 123.69;
+
+const packages = [
+  {
+    id:"3-days",
+    duration:"3 Days",
+    level:"BEGINNER",
+    tagline:"A short package for new models.",
+    income:15000,
+    jobs:7,
+    client:"Regular",
+    commission:30,
+    hoursPerJob:4,
+    fee:599
+  },
+  {
+    id:"7-days",
+    duration:"7 Days",
+    level:"FRESHER",
+    tagline:"More time to explore modeling work.",
+    income:25000,
+    jobs:10,
+    client:"Regular / Premium",
+    commission:25,
+    hoursPerJob:4,
+    fee:1190,
+    featured:true
+  },
+  {
+    id:"10-days",
+    duration:"10 Days",
+    level:"RISING MODEL",
+    tagline:"Build your profile and gain experience.",
+    income:30000,
+    jobs:8,
+    client:"Regular / Premium",
+    commission:25,
+    hoursPerJob:4,
+    fee:1490
+  },
+  {
+    id:"14-days",
+    duration:"14 Days",
+    level:"PREMIUM",
+    tagline:"More time to explore client opportunities.",
+    income:40000,
+    jobs:10,
+    client:"Premium / VIP",
+    commission:20,
+    hoursPerJob:4,
+    fee:1850
+  },
+  {
+    id:"20-days",
+    duration:"20 Days",
+    level:"ADVANCED",
+    tagline:"A longer period to seek suitable projects.",
+    income:50000,
+    jobs:12,
+    client:"Premium / VIP",
+    commission:15,
+    hoursPerJob:4,
+    fee:2490
+  },
+  {
+    id:"1-month",
+    duration:"1 Month",
+    level:"ELITE",
+    tagline:"A month-long modeling package.",
+    income:70000,
+    jobs:15,
+    client:"VIP / Special",
+    commission:15,
+    hoursPerJob:4,
+    fee:3600
+  },
+  {
+    id:"6-months",
+    duration:"6 Months",
+    level:"PROFESSIONAL",
+    tagline:"A longer plan for ongoing opportunities.",
+    income:400000,
+    jobs:80,
+    client:"Premium / VIP / Special",
+    commission:10,
+    hoursPerJob:4,
+    fee:9990
+  },
+  {
+    id:"1-year",
+    duration:"1 Year",
+    level:"AGENCY SELECT",
+    tagline:"A long-term modeling package.",
+    income:1000000,
+    jobs:150,
+    client:"VIP / Special",
+    commission:7,
+    hoursPerJob:4,
+    fee:30000
+  },
+  {
+    id:"lifetime",
+    duration:"Lifetime",
+    level:"LEGACY",
+    tagline:"A proposed long-term membership option.",
+    income:null,
+    jobs:null,
+    client:"Based on client opportunities",
+    commission:5,
+    hoursPerJob:4,
+    fee:50000
+  }
+];
+
+const params = new URLSearchParams(location.search);
+const area = params.get("area") || "";
+
+const areaLabels = {
+  bangladesh:"BANGLADESH",
+  international:"INTERNATIONAL",
+  both:"BANGLADESH & INTERNATIONAL"
+};
+
+document.getElementById("areaName").textContent =
+  areaLabels[area] || "NOT SELECTED";
+
+const money = n =>
+  "৳" + Number(n).toLocaleString("en-US");
+
+const dollars = n =>
+  "$" + (Number(n) / USD_TO_BDT).toLocaleString("en-US", {
+    minimumFractionDigits:2,
+    maximumFractionDigits:2
+  });
+
+function moneyBoth(n){
+  return `${money(n)} <span class="fee-usd">≈ ${dollars(n)} USD</span>`;
+}
+
+function packageCard(p, wide=false){
+
+  const net = p.income === null
+    ? null
+    : Math.round(p.income * (1 - p.commission / 100));
+
+  const totalHours = p.jobs === null
+    ? null
+    : p.jobs * p.hoursPerJob;
+
+  const card = document.createElement("article");
+
+  card.className = wide
+    ? "wide-card"
+    : "package-card" + (p.featured ? " featured" : "");
+
+  card.id = "package-" + p.id;
+
+  const summary = `
+    <div class="${wide ? "wide-summary" : ""}">
+      <div class="card-top">
+        <div class="level">${p.level}</div>
+        ${p.featured ? '<span class="badge">FEATURED</span>' : ""}
+      </div>
+      <div class="duration">${p.duration}</div>
+      <p class="tagline">${p.tagline}</p>
+    </div>`;
+
+  const incomeValue = p.income === null
+    ? "Unlimited*"
+    : moneyBoth(p.income);
+
+  const jobsValue = p.jobs === null
+    ? "Unlimited*"
+    : "Minimum " + p.jobs;
+
+  const netValue = net === null
+    ? "Depends on actual earnings"
+    : moneyBoth(net);
+
+  const metrics = `
+    <div class="metrics">
+
+      <div class="metric metric-income">
+        <div class="metric-label">ESTIMATED INCOME</div>
+        <div class="metric-value gold">${incomeValue}</div>
+        <div class="metric-note">Before commission</div>
+        <div class="metric-note">After commission:</div>
+        <div class="metric-value">${netValue}</div>
+      </div>
+
+      <div class="metric">
+        <div class="metric-label">MINIMUM JOB TARGET</div>
+        <div class="metric-value">${jobsValue}</div>
+        <div class="metric-note">
+          ${p.jobs === null ? "No fixed limit stated" : "Not guaranteed"}
+        </div>
+      </div>
+
+      <div class="metric">
+        <div class="metric-label">CLIENT TYPE</div>
+        <div class="metric-value">${p.client}</div>
+      </div>
+
+      <div class="metric">
+        <div class="metric-label">AGENCY COMMISSION</div>
+        <div class="metric-value">${p.commission}%</div>
+        <div class="metric-note">Of applicable earnings</div>
+      </div>
+
+      <div class="metric">
+        <div class="metric-label">WORK TIME</div>
+        <div class="metric-value">
+          ${totalHours === null ? "4 hrs / job" : totalHours + " hrs"}
+        </div>
+        <div class="metric-note">
+          ${totalHours === null ? "Average per job" : "At minimum job target"}
+        </div>
+      </div>
+
+    </div>`;
+
+  const feeAndButton = `
+    <div class="wide-bottom">
+      <div class="fee-row">
+        <div class="fee-label">
+          MEDIA / REGISTRATION FEE<br>
+          Package price
+        </div>
+        <div class="fee-price">${moneyBoth(p.fee)}</div>
+      </div>
+
+      <a class="select-btn"
+         href="model-application.html?area=${encodeURIComponent(area)}&package=${encodeURIComponent(p.id)}">
+        CHOOSE PACKAGE
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>`;
+
+  card.innerHTML = wide
+    ? `${summary}<div class="wide-content">${metrics}${feeAndButton}</div>`
+    : `${summary}${metrics}${feeAndButton}`;
+
+  return card;
+}
+
+/* RENDER PACKAGES */
+
+const starter = document.getElementById("starterCards");
+const wide = document.getElementById("wideCards");
+
+packages.forEach((p, i) => {
+  if(i < 2){
+    starter.appendChild(packageCard(p));
+  }else{
+    wide.appendChild(packageCard(p, true));
+  }
+});
+
+/* START HERE BUTTON */
+
+document.getElementById("startHereButton").addEventListener("click", function(){
+
+  const target = document.getElementById("package-7-days");
+
+  if(target){
+    target.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  }
+
+});
+</script>
+
+</body>
+</html>

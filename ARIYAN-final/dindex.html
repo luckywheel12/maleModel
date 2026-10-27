@@ -1,0 +1,856 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080909">
+<title>ARIYAN | Male Model Agency</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root{
+  --bg:#080909;--gold:#e9bd68;--text:#f5f5f5;
+  --muted:#a9afb7;--line:#292e32;--green:#82d99a;--red:#ff626a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+
+.navbar{
+  min-height:100px;padding:14px 5.5%;display:flex;
+  align-items:center;justify-content:space-between;gap:20px;
+  position:absolute;top:0;left:0;width:100%;z-index:5;
+  border-bottom:1px solid rgba(255,255,255,.15);
+  background:linear-gradient(180deg,rgba(0,0,0,.55),transparent);
+}
+.logo{font:42px Georgia,serif;letter-spacing:10px;color:var(--gold)}
+.logo small{display:block;font:10px Arial,sans-serif;letter-spacing:4px;color:#eee;margin-top:5px}
+.nav-actions{display:flex;gap:12px}
+.nav-btn{
+  min-height:44px;padding:0 19px;border:1px solid var(--gold);
+  background:rgba(0,0,0,.35);color:var(--gold);font-size:11px;
+  letter-spacing:1.2px;display:inline-flex;align-items:center;
+  justify-content:center;gap:9px;transition:.2s
+}
+.nav-btn:hover{background:var(--gold);color:#111}
+
+.hero{
+  min-height:790px;min-height:100svh;position:relative;
+  display:flex;align-items:center;background-color:#080909;
+  background-image:
+    linear-gradient(90deg,
+      rgba(4,5,5,.98) 0%,
+      rgba(4,5,5,.93) 27%,
+      rgba(4,5,5,.72) 45%,
+      rgba(4,5,5,.15) 72%,
+      rgba(4,5,5,.22) 100%),
+    url('images/hero-model.png');
+  background-size:cover;background-position:center center;
+  background-repeat:no-repeat;
+  border-bottom:1px solid rgba(255,255,255,.17);
+}
+.hero-content{
+  width:min(780px,58%);position:relative;z-index:2;
+  margin-left:5.5%;padding-top:90px;padding-bottom:45px;
+}
+.eyebrow{
+  color:var(--gold);font-size:12px;letter-spacing:6px;
+  margin-bottom:25px;text-transform:uppercase
+}
+.hero-title{
+  font:normal clamp(76px,9vw,140px)/.94 Georgia,'Times New Roman',serif;
+  letter-spacing:5px;color:#f8f6f0;white-space:nowrap;
+}
+.hero-title span{color:var(--gold)}
+.subtitle{
+  font:normal clamp(23px,3vw,43px)/1.25 Georgia,'Times New Roman',serif;
+  letter-spacing:clamp(4px,.85vw,12px);
+  white-space:nowrap;margin-top:28px;color:#fff
+}
+.hero-desc{
+  max-width:620px;color:#d0d0d0;font-size:16px;
+  line-height:1.9;margin-top:30px
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
+.gold-btn,.outline-btn{
+  min-height:57px;min-width:260px;padding:0 25px;
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:18px;font-size:12px;letter-spacing:2px;
+  transition:.25s;border:1px solid var(--gold)
+}
+.gold-btn{background:var(--gold);color:#111}
+.gold-btn:hover{background:#f5d18b}
+.outline-btn{background:rgba(0,0,0,.2);color:white;border-color:rgba(255,255,255,.65)}
+.outline-btn:hover{border-color:var(--gold);color:var(--gold)}
+.arrow{font-size:23px;font-weight:normal}
+
+.hero-signature{
+  position:absolute;right:5.5%;bottom:35px;z-index:2;
+  border-left:1px solid var(--gold);padding:3px 0 3px 18px
+}
+.hero-signature strong{
+  display:block;font:24px Georgia,serif;letter-spacing:6px;color:var(--gold)
+}
+.hero-signature span{display:block;font-size:10px;letter-spacing:3px;margin-top:7px}
+
+main{max-width:1500px;margin:auto;padding:42px 5.5% 50px}
+.section-heading{display:flex;align-items:center;gap:18px;margin-bottom:20px}
+.section-heading span{font-size:11px;letter-spacing:3px;color:var(--gold);white-space:nowrap}
+.section-heading:after{content:"";height:1px;background:#5b4b2f;flex:1}
+.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.stat-card{
+  background:linear-gradient(145deg,#101416,#090b0c);
+  border:1px solid #30363a;border-radius:5px;padding:21px;min-width:0
+}
+.stat-icon{color:var(--gold);font-size:22px;margin-bottom:17px}
+.stat-number{font:clamp(26px,2.4vw,35px) Georgia,serif;font-variant-numeric:tabular-nums}
+.stat-label{font-size:10px;letter-spacing:1.5px;margin-top:9px}
+.stat-note{color:var(--muted);font-size:11px;margin-top:8px;line-height:1.5}
+.stat-change{color:var(--green);font-size:10px;margin-top:10px}
+
+.analytics-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;margin-top:14px}
+.panel{background:#101315;border:1px solid #242b30;border-radius:5px;padding:20px;min-width:0}
+.panel-title{font-size:10px;letter-spacing:2px;margin-bottom:20px;color:#e7e9eb}
+.chart-wrap{height:195px;width:100%}
+.chart-wrap svg{width:100%;height:100%;display:block}
+.chart-grid{stroke:#20262a;stroke-width:1}
+.chart-label{fill:#b8c0c8;font-size:10px}
+.chart-line{fill:none;stroke:var(--gold);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.chart-dot{fill:var(--gold)}
+.donut-layout{display:flex;align-items:center;gap:24px;justify-content:center;min-height:180px}
+.donut{
+  width:140px;height:140px;border-radius:50%;flex-shrink:0;
+  background:conic-gradient(#e9bd68 0 68%,#318ef4 68% 88%,#ff635c 88% 95%,#279c76 95% 100%);
+  display:grid;place-items:center
+}
+.donut-inner{width:96px;height:96px;border-radius:50%;background:#101315;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut-inner strong{font:22px Georgia,serif}
+.donut-inner span{font-size:9px;color:var(--muted);margin-top:5px}
+.legend{display:grid;gap:14px;flex:1;min-width:110px}
+.legend-row{display:grid;grid-template-columns:10px 1fr auto;align-items:center;gap:8px;font-size:11px;color:#d5d9dd}
+.legend-dot{width:10px;height:10px;border-radius:50%}
+.legend-row strong{font-weight:normal}
+.bottom-note{font-size:10px;color:#8c969e;line-height:1.8;margin-top:16px}
+
+.reviews-section{margin-top:40px}
+.review-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.review-topline .section-heading{flex:1;margin:0}
+.review-controls{display:flex;gap:8px}
+.small-control{height:35px;width:37px;border:1px solid #41474c;background:#0c0e0f;color:var(--gold)}
+.small-control:hover{border-color:var(--gold)}
+.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.review-card{
+  background:linear-gradient(145deg,#101315,#090b0c);
+  border:1px solid #2a3034;border-radius:5px;padding:19px;
+  display:flex;flex-direction:column;min-width:0;min-height:245px;
+  animation:reviewFade .35s ease both;
+}
+@keyframes reviewFade{
+  from{opacity:.25;transform:translateY(5px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.review-person{display:flex;align-items:center;gap:12px}
+.avatar{
+  width:43px;height:43px;border-radius:50%;display:grid;place-items:center;
+  background:#252017;border:1px solid #7b6338;color:var(--gold);
+  font:17px Georgia,serif;flex-shrink:0
+}
+.person-name{font-size:12px;font-weight:bold;line-height:1.5}
+.person-type{font-size:10px;color:var(--muted);margin-top:3px}
+.stars{color:var(--gold);font-size:12px;letter-spacing:2px;margin-top:13px}
+.review-text{font-size:12px;line-height:1.8;color:#d8dde1;margin-top:12px;flex:1}
+.review-time{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-top:17px;padding-top:12px;border-top:1px solid #252b2f;font-size:9px;color:#a4adb5}
+.review-note{color:#8c969e;font-size:10px;line-height:1.7;margin-top:0;margin-bottom:16px}
+
+footer{
+  min-height:75px;padding:20px 5.5%;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;gap:15px;
+  flex-wrap:wrap;color:var(--gold);font-size:9px;letter-spacing:2.5px
+}
+.footer-brand{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.footer-brand span:nth-child(even){color:#77623d}
+.footer-motto{color:#d5b66e}
+
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(0,0,0,.8);
+  backdrop-filter:blur(5px);display:none;align-items:center;
+  justify-content:center;padding:18px;z-index:20
+}
+.modal-backdrop.show{display:flex}
+.modal{
+  width:min(100%,490px);max-height:90vh;overflow-y:auto;
+  position:relative;background:linear-gradient(145deg,#101314,#080909);
+  border:1px solid var(--gold);border-radius:8px;padding:30px
+}
+.close-btn{
+  position:absolute;right:15px;top:14px;width:34px;height:34px;
+  border:1px solid #30363a;background:transparent;color:#ddd;font-size:20px
+}
+.close-btn:hover{color:var(--gold);border-color:var(--gold)}
+.modal h2{font:26px Georgia,serif;letter-spacing:3px;color:var(--gold);padding-right:30px}
+.modal-subtitle{color:#d2d7dc;font-size:13px;line-height:1.8;margin-top:16px}
+.bn-copy{font-size:13px;line-height:1.9;color:#e1e4e7;margin-top:13px}
+.field-label{display:block;font-size:10px;letter-spacing:1px;color:#ddd;margin:22px 0 9px}
+.input-wrap{position:relative}
+.input-wrap i{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#aab2b9}
+.input-wrap input{width:100%;height:49px;background:#080a0b;border:1px solid #51585e;color:#fff;border-radius:5px;padding:0 14px 0 43px;outline:none}
+.input-wrap input:focus{border-color:var(--gold)}
+.modal-submit{width:100%;margin-top:17px}
+.error-message{
+  display:none;margin-top:16px;padding:14px;border:1px solid var(--red);
+  background:rgba(255,50,60,.07);border-radius:5px;color:#ff7279;
+  font-size:12px;line-height:1.8
+}
+.error-message.show{display:block;animation:errorIn .35s ease both}
+.error-message i{margin-right:7px}
+@keyframes errorIn{
+  0%{opacity:0;transform:translateX(0)}
+  20%{transform:translateX(-5px)}40%{transform:translateX(5px)}
+  60%{transform:translateX(-3px)}80%{transform:translateX(3px)}
+  100%{opacity:1;transform:translateX(0)}
+}
+.input-wrap.invalid input{border-color:var(--red);animation:errorIn .35s ease}
+.login-notice{font-size:12px;color:var(--muted);line-height:1.8;margin-top:17px}
+
+@media(max-width:1000px){
+  .navbar{padding-left:4%;padding-right:4%}
+  .logo{font-size:34px;letter-spacing:8px}
+  .hero-content{width:65%;margin-left:4%}
+  .hero-title{font-size:clamp(65px,9vw,100px)}
+  .subtitle{letter-spacing:5px}
+  main{padding-left:4%;padding-right:4%}
+  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:650px){
+  .navbar{min-height:78px;padding:12px 5%;align-items:center}
+  .logo{font-size:26px;letter-spacing:6px}
+  .logo small{font-size:8px;letter-spacing:2.5px}
+  .nav-actions{gap:6px}
+  .nav-btn{min-height:36px;padding:0 9px;font-size:9px;letter-spacing:.5px;gap:5px}
+  .hero{
+    min-height:100svh;align-items:flex-end;padding:40px 5% 28px;
+    background-image:
+      linear-gradient(180deg,rgba(4,5,5,.12) 0%,rgba(4,5,5,.28) 30%,rgba(4,5,5,.78) 57%,rgba(4,5,5,.98) 84%),
+      url('images/hero-model.png');
+    background-position:61% top;background-size:auto 100%;
+  }
+  .hero-content{width:100%;margin:0;padding-top:90px;padding-bottom:12px}
+  .eyebrow{font-size:9px;letter-spacing:3px;margin-bottom:15px}
+  .hero-title{font-size:clamp(49px,12vw,76px);letter-spacing:2px;white-space:normal}
+  .subtitle{font-size:clamp(18px,5vw,27px);letter-spacing:3px;white-space:normal;margin-top:16px}
+  .hero-desc{font-size:13px;line-height:1.75;margin-top:15px;max-width:450px}
+  .hero-actions{gap:9px;margin-top:22px}
+  .gold-btn,.outline-btn{min-width:0;flex:1;min-height:48px;padding:0 10px;font-size:9px;letter-spacing:1px;gap:8px}
+  .arrow{font-size:18px}
+  .hero-signature{display:none}
+  main{padding:28px 5% 35px}
+  .section-heading span{font-size:10px;letter-spacing:2px}
+  .stats-grid{gap:9px}
+  .stat-card{padding:15px 12px}
+  .stat-icon{font-size:19px;margin-bottom:12px}
+  .stat-number{font-size:25px}
+  .stat-label{font-size:9px;letter-spacing:.8px;line-height:1.5}
+  .stat-note{font-size:10px}
+  .analytics-grid{grid-template-columns:1fr;gap:10px;margin-top:10px}
+  .panel{padding:16px 12px}
+  .chart-wrap{height:170px}
+  .donut-layout{gap:15px}
+  .donut{width:120px;height:120px}
+  .donut-inner{width:82px;height:82px}
+  .legend{gap:12px}
+  .legend-row{font-size:10px;gap:6px}
+  .reviews-section{margin-top:30px}
+  .review-grid{grid-template-columns:1fr;gap:10px}
+  .review-card{min-height:0;padding:17px}
+  footer{padding:18px 5%;justify-content:center;text-align:center;font-size:8px;line-height:1.8}
+  .footer-brand{justify-content:center;gap:8px}
+  .modal{padding:26px 19px}
+  .modal h2{font-size:23px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<header class="navbar">
+  <a class="logo" href="index.html">ARIYAN<small>MALE MODEL AGENCY</small></a>
+  <div class="nav-actions">
+    <button class="nav-btn" id="loginOpen" type="button"><i class="fa-regular fa-user"></i> LOGIN</button>
+    <button class="nav-btn" id="registerOpen" type="button"><i class="fa-solid fa-user-lock"></i> REGISTER</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">MALE MODEL AGENCY</div>
+    <h1 class="hero-title">ARI<span>Y</span>AN</h1>
+    <h2 class="subtitle">MODELS FOR YOUR VISION</h2>
+    <p class="hero-desc">
+      Discover professional male models for fashion, commercial, lifestyle,
+      editorial and creative projects.<br>
+      Find the right face. Build the right campaign.
+    </p>
+    <div class="hero-actions">
+      <a href="become-model.html" class="gold-btn">BECOME A MODEL <span class="arrow">→</span></a>
+      <a href="client.html" class="outline-btn">FIND A MODEL <span class="arrow">→</span></a>
+    </div>
+  </div>
+  <div class="hero-signature">
+    <strong>ARIYAN</strong>
+    <span>MALE MODEL AGENCY</span>
+  </div>
+</section>
+
+<main>
+  <div class="section-heading"><span>OUR IMPACT</span></div>
+
+  <section class="stats-grid">
+    <article class="stat-card">
+      <div class="stat-icon"><i class="fa-regular fa-user"></i></div>
+      <div class="stat-number" id="visitorCount">12,458</div>
+      <div class="stat-label">VISITORS</div>
+      <div class="stat-note">Estimated website visitors</div>
+      <div class="stat-change" id="visitorChange">Daily growth: +50</div>
+    </article>
+    <article class="stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-user-tie"></i></div>
+      <div class="stat-number" id="modelCount">892</div>
+      <div class="stat-label">MODELS</div>
+      <div class="stat-note">Model count</div>
+    </article>
+    <article class="stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-briefcase"></i></div>
+      <div class="stat-number" id="completedCount">1,248</div>
+      <div class="stat-label">JOBS COMPLETED</div>
+      <div class="stat-note">Completed projects</div>
+    </article>
+    <article class="stat-card">
+      <div class="stat-icon"><i class="fa-regular fa-rectangle-list"></i></div>
+      <div class="stat-number" id="ordersCount">186</div>
+      <div class="stat-label">AVAILABLE ORDERS</div>
+      <div class="stat-note">Open projects</div>
+    </article>
+  </section>
+
+  <section class="analytics-grid">
+    <article class="panel">
+      <div class="panel-title">VISITORS TREND</div>
+      <div class="chart-wrap">
+        <svg viewBox="0 0 540 205" role="img" aria-label="Illustrative visitor trend chart">
+          <g id="chartContents"></g>
+        </svg>
+      </div>
+      <p class="bottom-note">Illustrative chart calculated from the configured daily growth rate.</p>
+    </article>
+    <article class="panel">
+      <div class="panel-title">PROJECTS STATUS</div>
+      <div class="donut-layout">
+        <div class="donut">
+          <div class="donut-inner"><strong id="donutTotal">1,248</strong><span>Projects</span></div>
+        </div>
+        <div class="legend">
+          <div class="legend-row"><span class="legend-dot" style="background:#e9bd68"></span><span>Completed</span><strong>68%</strong></div>
+          <div class="legend-row"><span class="legend-dot" style="background:#318ef4"></span><span>In Progress</span><strong>20%</strong></div>
+          <div class="legend-row"><span class="legend-dot" style="background:#ff635c"></span><span>Cancelled</span><strong>7%</strong></div>
+          <div class="legend-row"><span class="legend-dot" style="background:#279c76"></span><span>Available</span><strong>5%</strong></div>
+        </div>
+      </div>
+      <p class="bottom-note">Project percentages are illustrative values, not live agency records.</p>
+    </article>
+  </section>
+
+  <section class="reviews-section" id="reviews">
+    <div class="review-topline">
+      <div class="section-heading"><span>COMMUNITY REVIEWS</span></div>
+      <div class="review-controls">
+        <button class="small-control" type="button" id="prevReviews" aria-label="Previous reviews"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="small-control" type="button" id="nextReviews" aria-label="Next reviews"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+    <p class="review-note">Illustrative profiles and comments; these are not verified customer testimonials.</p>
+    <div class="review-grid" id="reviewGrid"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-brand"><span>ARIYAN</span><span>—</span><span>MALE MODEL AGENCY</span><span>—</span><span>EST. 2026</span></div>
+  <div class="footer-motto">DREAM &nbsp; / &nbsp; BUILD &nbsp; / &nbsp; GROW</div>
+</footer>
+
+<div class="modal-backdrop" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+  <div class="modal">
+    <button class="close-btn" type="button" data-close aria-label="Close registration">&times;</button>
+    <h2 id="registerTitle">REGISTRATION</h2>
+    <p class="modal-subtitle">Enter the secret code shared by our admin team to proceed with registration.</p>
+    <p class="bn-copy">নিবন্ধন সম্পন্ন করতে আমাদের অ্যাডমিন টিম কর্তৃক আপনার সঙ্গে যোগাযোগের মাধ্যমে শেয়ার করা গোপন কোডটি নিচের ঘরে লিখুন।</p>
+    <form id="registerForm" novalidate>
+      <label class="field-label" for="secretCode">SECRET REGISTRATION CODE / গোপন নিবন্ধন কোড</label>
+      <div class="input-wrap" id="codeWrap">
+        <i class="fa-solid fa-lock"></i>
+        <input id="secretCode" type="text" placeholder="Enter Secret Code" autocomplete="off">
+      </div>
+      <button class="gold-btn modal-submit" type="submit">SUBMIT <i class="fa-solid fa-arrow-right"></i></button>
+      <div class="error-message" id="codeError" role="alert" aria-live="polite">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span>Please enter the correct code provided by our admin team.<br>আমাদের অ্যাডমিন টিমের পাঠানো সঠিক কোডটি দিন।</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+  <div class="modal">
+    <button class="close-btn" type="button" data-close aria-label="Close login">&times;</button>
+    <h2 id="loginTitle">PROFILE LOGIN</h2>
+    <p class="modal-subtitle">Your profile login will become available when account services are activated.</p>
+    <p class="bn-copy">অ্যাকাউন্ট সেবা চালু হলে আপনি এখানে নিজের মডেল প্রোফাইলে প্রবেশ করতে পারবেন।</p>
+    <p class="login-notice">Account login is not connected yet.<br>এখনো কোনো অ্যাকাউন্ট লগইন ব্যবস্থা যুক্ত করা হয়নি।</p>
+  </div>
+</div>
+
+<script>
+/* ========== EDIT THESE SETTINGS ========== */
+const SITE_CONFIG = {
+  startDate: "2026-10-24",
+  visitorStart: 12458,
+  visitorsPerDay: 50,
+  modelStart: 892,
+  completedJobsStart: 1248,
+  availableOrdersStart: 186,
+  chartDays: 7
+};
+
+/*
+  REVIEW ROTATION SETTINGS
+
+  Slot 1 changes after 1 hour.
+  Slot 2 changes after 12 hours.
+  Slot 3 changes after 24 hours.
+
+  Further changes use the intervals listed below.
+  Time and selected review indexes are saved in this browser.
+*/
+const REVIEW_STORAGE_KEY = "ariyan_review_rotation_v2";
+
+const REVIEW_INTERVALS = [
+  [1, 72, 12, 48, 24, 6, 36, 12, 72, 24, 1, 48],
+  [12, 24, 1, 72, 6, 48, 24, 12, 36, 1, 72, 24],
+  [24, 6, 48, 1, 72, 12, 24, 36, 1, 48, 12, 72]
+];
+
+/* 54 sample profiles and unique English comments.
+   Most female profiles are Bangladeshi, with a few international profiles. */
+const REVIEW_PROFILES = [
+  {name:"Nusrat Jahan",initials:"NJ",type:"CLIENT",stars:5,en:"The presentation was elegant and the project information was easy to understand."},
+  {name:"Mim Akter",initials:"MA",type:"CLIENT",stars:5,en:"I liked the clean layout and the clear explanation of the available services."},
+  {name:"Sadia Islam",initials:"SI",type:"CLIENT",stars:5,en:"The website feels modern, organized, and simple to navigate."},
+  {name:"Ayesha Rahman",initials:"AR",type:"CLIENT",stars:4,en:"The overall design looks polished and the information is well arranged."},
+  {name:"Tanjina Ahmed",initials:"TA",type:"CLIENT",stars:5,en:"The project categories make it easier to understand what is offered."},
+  {name:"Faria Hossain",initials:"FH",type:"CLIENT",stars:5,en:"I found the application and service details clear and straightforward."},
+  {name:"Sumaiya Akter",initials:"SA",type:"CLIENT",stars:5,en:"The gold and black design gives the website a premium appearance."},
+  {name:"Nabila Sultana",initials:"NS",type:"CLIENT",stars:4,en:"The page structure is simple and the main options are easy to find."},
+  {name:"Mahiya Chowdhury",initials:"MC",type:"CLIENT",stars:5,en:"The website presents its creative services in a neat and professional way."},
+  {name:"Jannatul Ferdous",initials:"JF",type:"CLIENT",stars:5,en:"The visual style is attractive without making the page feel crowded."},
+  {name:"Samia Noor",initials:"SN",type:"CLIENT",stars:4,en:"The information is readable and the navigation feels straightforward."},
+  {name:"Rafia Karim",initials:"RK",type:"CLIENT",stars:5,en:"The design has a strong identity and a consistent visual style."},
+  {name:"Mst. Lamia Begum",initials:"LB",type:"CLIENT",stars:5,en:"I appreciate how the key actions are easy to spot on the page."},
+  {name:"Ishrat Jahan",initials:"IJ",type:"CLIENT",stars:5,en:"The layout looks balanced and the typography suits the brand."},
+  {name:"Tahmina Islam",initials:"TI",type:"CLIENT",stars:4,en:"The service descriptions give visitors a useful starting point."},
+  {name:"Anika Tasnim",initials:"AT",type:"CLIENT",stars:5,en:"The homepage feels carefully designed and easy to browse."},
+  {name:"Farzana Yasmin",initials:"FY",type:"CLIENT",stars:5,en:"The dark theme and gold details work well together."},
+  {name:"Mehjabin Sultana",initials:"MS",type:"CLIENT",stars:4,en:"The important information is presented in a clean format."},
+  {name:"Orin Mahmud",initials:"OM",type:"CLIENT",stars:5,en:"The design gives a clear impression of the agency's intended style."},
+  {name:"Raisa Ahmed",initials:"RA",type:"CLIENT",stars:5,en:"The page is visually consistent and the buttons stand out clearly."},
+  {name:"Sanjida Akter",initials:"SA2",type:"CLIENT",stars:5,en:"The website is easy to scan, even when viewed on a smaller screen."},
+  {name:"Nafisa Tabassum",initials:"NT",type:"CLIENT",stars:4,en:"The content sections are organized in a logical order."},
+  {name:"Afrin Nahar",initials:"AN",type:"CLIENT",stars:5,en:"The overall experience feels simple and well structured."},
+  {name:"Tasnia Rahman",initials:"TR",type:"CLIENT",stars:5,en:"The agency identity comes through clearly in the visual design."},
+  {name:"Sabrina Haque",initials:"SH",type:"CLIENT",stars:4,en:"The homepage has a distinctive look and a clear call to action."},
+  {name:"Lubna Chowdhury",initials:"LC",type:"CLIENT",stars:5,en:"The design feels professional while keeping the information accessible."},
+  {name:"Nishi Akter",initials:"NA",type:"CLIENT",stars:5,en:"The page layout makes the main choices easy to understand."},
+  {name:"Priya Das",initials:"PD",type:"CLIENT",stars:4,en:"The branding is memorable and the layout is nicely balanced."},
+  {name:"Sharmeen Sultana",initials:"SS",type:"CLIENT",stars:5,en:"The website has a consistent style from the header to the footer."},
+  {name:"Tasmia Jahan",initials:"TJ",type:"CLIENT",stars:5,en:"The information hierarchy makes the page easy to follow."},
+  {name:"Moumita Roy",initials:"MR",type:"CLIENT",stars:4,en:"The visual presentation is stylish and the service links are clear."},
+  {name:"Rumana Akter",initials:"RA2",type:"CLIENT",stars:5,en:"The design feels modern and the important buttons are easy to notice."},
+  {name:"Puja Saha",initials:"PS",type:"CLIENT",stars:5,en:"The simple layout helps visitors focus on the main information."},
+  {name:"Shila Khatun",initials:"SK",type:"CLIENT",stars:4,en:"The agency branding looks cohesive and carefully considered."},
+  {name:"Joya Islam",initials:"JI",type:"CLIENT",stars:5,en:"The homepage provides a clear introduction to the agency concept."},
+  {name:"Rukaiya Noor",initials:"RN",type:"CLIENT",stars:5,en:"The page is uncluttered and the text is easy to read."},
+  {name:"Maliha Anjum",initials:"MA2",type:"CLIENT",stars:4,en:"The design choices give the brand a distinctive personality."},
+  {name:"Sohana Rahman",initials:"SR",type:"CLIENT",stars:5,en:"The visual balance between the image and text works nicely."},
+  {name:"Nawar Tasnim",initials:"NT2",type:"CLIENT",stars:5,en:"The homepage feels consistent and has a clear visual direction."},
+  {name:"Afia Karim",initials:"AK",type:"CLIENT",stars:4,en:"The service options are presented in a way that is easy to scan."},
+  {name:"Zara Ahmed",initials:"ZA",type:"CLIENT",stars:5,en:"The typography and spacing make the page feel refined."},
+  {name:"Emily Carter",initials:"EC",type:"CLIENT",stars:5,en:"The brand presentation is clean and the main actions are easy to locate."},
+  {name:"Olivia Bennett",initials:"OB",type:"CLIENT",stars:4,en:"The website has a strong visual identity and a straightforward layout."},
+  {name:"Sophia Williams",initials:"SW",type:"CLIENT",stars:5,en:"The dark visual theme creates a consistent and memorable presentation."},
+  {name:"Isabella Martin",initials:"IM",type:"CLIENT",stars:5,en:"The content is arranged clearly and the design feels intentional."},
+  {name:"Chloe Anderson",initials:"CA",type:"CLIENT",stars:4,en:"The homepage gives a useful overview without unnecessary clutter."},
+  {name:"Amelia Wilson",initials:"AW",type:"CLIENT",stars:5,en:"The main navigation and calls to action are easy to understand."},
+  {name:"Grace Thompson",initials:"GT",type:"CLIENT",stars:5,en:"The page looks polished and maintains a consistent brand style."},
+  {name:"Mia Robinson",initials:"MR2",type:"CLIENT",stars:4,en:"The service presentation is simple and the overall design is appealing."},
+  {name:"Ella Johnson",initials:"EJ",type:"CLIENT",stars:5,en:"The page has a premium look while keeping its content readable."},
+  {name:"Charlotte Davis",initials:"CD",type:"CLIENT",stars:5,en:"The clear layout makes it easier to explore the agency concept."},
+  {name:"Hannah Moore",initials:"HM",type:"CLIENT",stars:4,en:"The design is restrained, stylish, and easy to navigate."},
+  {name:"Lily Taylor",initials:"LT",type:"CLIENT",stars:5,en:"The site gives the brand a clear and consistent presentation."},
+  {name:"Amara Okafor",initials:"AO",type:"CLIENT",stars:5,en:"The visual direction feels modern and the main sections are easy to find."}
+];
+
+/* Date and number helpers */
+function todayISO(){
+  const d=new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+}
+
+function dayDifference(start,end){
+  const a=start.split("-").map(Number);
+  const b=end.split("-").map(Number);
+  return Math.max(0,Math.floor(
+    (Date.UTC(b[0],b[1]-1,b[2])-Date.UTC(a[0],a[1]-1,a[2]))/86400000
+  ));
+}
+
+function comma(n){
+  return Math.floor(n).toLocaleString("en-US");
+}
+
+function getVisitorCount(){
+  return SITE_CONFIG.visitorStart+
+    dayDifference(SITE_CONFIG.startDate,todayISO())*
+    SITE_CONFIG.visitorsPerDay;
+}
+
+function animateNumber(el,target){
+  const start=performance.now();
+  const duration=850;
+
+  function step(now){
+    const p=Math.min((now-start)/duration,1);
+    const ease=1-Math.pow(1-p,3);
+    el.textContent=comma(target*ease);
+    if(p<1)requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
+function renderCounters(){
+  const values=[
+    ["visitorCount",getVisitorCount()],
+    ["modelCount",SITE_CONFIG.modelStart],
+    ["completedCount",SITE_CONFIG.completedJobsStart],
+    ["ordersCount",SITE_CONFIG.availableOrdersStart]
+  ];
+
+  values.forEach(([id,n])=>{
+    animateNumber(document.getElementById(id),n);
+  });
+
+  document.getElementById("visitorChange").textContent=
+    `Daily growth: +${comma(SITE_CONFIG.visitorsPerDay)}`;
+
+  document.getElementById("donutTotal").textContent=
+    comma(SITE_CONFIG.completedJobsStart);
+}
+
+/* Visitor chart */
+function renderChart(){
+  const g=document.getElementById("chartContents");
+  const count=Math.max(2,Math.min(12,SITE_CONFIG.chartDays));
+  const current=getVisitorCount();
+
+  const vals=Array.from(
+    {length:count},
+    (_,i)=>current-(count-1-i)*SITE_CONFIG.visitorsPerDay
+  );
+
+  const left=45,right=520,top=22,bottom=157;
+  const max=Math.max(...vals)*1.08;
+  const min=Math.max(0,Math.min(...vals)*.88);
+  const range=Math.max(1,max-min);
+
+  const pts=vals.map((v,i)=>({
+    x:left+(right-left)*i/(count-1),
+    y:bottom-(v-min)/range*(bottom-top),
+    v
+  }));
+
+  let html="";
+
+  [top,top+45,top+90,bottom].forEach((y,i)=>{
+    html+=`<line class="chart-grid" x1="${left}" y1="${y}" x2="${right}" y2="${y}"/>`;
+    const val=Math.round(max*(1-i/3));
+    html+=`<text class="chart-label" x="2" y="${y+4}">${val>=1000?Math.round(val/1000)+"K":val}</text>`;
+  });
+
+  const line=pts.map(p=>`${p.x},${p.y}`).join(" ");
+
+  html+=`<polygon points="${left},${bottom} ${line} ${right},${bottom}" fill="#e9bd68" opacity=".08"/>`;
+  html+=`<polyline class="chart-line" points="${line}"/>`;
+
+  pts.forEach(p=>{
+    html+=`<circle class="chart-dot" cx="${p.x}" cy="${p.y}" r="3.5"><title>${comma(p.v)} visitors</title></circle>`;
+  });
+
+  pts.forEach((p,i)=>{
+    const labels=count<=7?["Jan","Feb","Mar","Apr","May","Jun","Jul"]:null;
+    const label=labels?labels[i]:`-${count-1-i}d`;
+    html+=`<text class="chart-label" text-anchor="middle" x="${p.x}" y="184">${label}</text>`;
+  });
+
+  g.innerHTML=html;
+}
+
+/* ========== TIMED REVIEW ROTATION ========== */
+
+function getReviewState(){
+  let state;
+
+  try{
+    state=JSON.parse(localStorage.getItem(REVIEW_STORAGE_KEY));
+  }catch(error){
+    state=null;
+  }
+
+  if(!state || !Array.isArray(state.slots) || state.version!==2){
+    const now=Date.now();
+
+    state={
+      version:2,
+      slots:[
+        {index:0,lastChange:now},
+        {index:1,lastChange:now},
+        {index:2,lastChange:now}
+      ]
+    };
+
+    try{
+      localStorage.setItem(REVIEW_STORAGE_KEY,JSON.stringify(state));
+    }catch(error){}
+  }
+
+  return state;
+}
+
+function saveReviewState(state){
+  try{
+    localStorage.setItem(REVIEW_STORAGE_KEY,JSON.stringify(state));
+  }catch(error){}
+}
+
+function getIntervalHours(slotIndex,rotationIndex){
+  const intervals=REVIEW_INTERVALS[slotIndex];
+  return intervals[rotationIndex%intervals.length];
+}
+
+function advanceDueReviewSlots(){
+  const state=getReviewState();
+  const now=Date.now();
+  const used=new Set(state.slots.map(slot=>slot.index));
+
+  state.slots.forEach((slot,slotIndex)=>{
+    const rotationIndex=slot.rotationIndex||0;
+    const intervalHours=getIntervalHours(slotIndex,rotationIndex);
+    const intervalMs=intervalHours*60*60*1000;
+    const elapsed=now-slot.lastChange;
+
+    if(elapsed>=intervalMs){
+      const oldIndex=slot.index;
+      used.delete(oldIndex);
+
+      let nextIndex=oldIndex;
+
+      /* Choose a new profile that is not currently visible. */
+      for(let attempt=0;attempt<REVIEW_PROFILES.length*2;attempt++){
+        const candidate=Math.floor(Math.random()*REVIEW_PROFILES.length);
+        if(!used.has(candidate) && candidate!==oldIndex){
+          nextIndex=candidate;
+          break;
+        }
+      }
+
+      slot.index=nextIndex;
+      slot.lastChange=now;
+      slot.rotationIndex=rotationIndex+1;
+      used.add(nextIndex);
+    }
+  });
+
+  saveReviewState(state);
+  return state;
+}
+
+function escapeHTML(s){
+  return String(s).replace(/[&<>"']/g,c=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[c]));
+}
+
+function renderReviews(){
+  const state=advanceDueReviewSlots();
+  const grid=document.getElementById("reviewGrid");
+
+  /* Exactly three review cards are rendered. */
+  const visible=state.slots.slice(0,3);
+
+  grid.innerHTML=visible.map(slot=>{
+    const r=REVIEW_PROFILES[slot.index];
+
+    return `
+      <article class="review-card">
+        <div class="review-person">
+          <div class="avatar">${escapeHTML(r.initials)}</div>
+          <div>
+            <div class="person-name">${escapeHTML(r.name)}</div>
+            <div class="person-type">CLIENT REVIEW</div>
+          </div>
+        </div>
+
+        <div class="stars" aria-label="${r.stars} out of 5 stars">
+          ${"★".repeat(r.stars)}${"☆".repeat(5-r.stars)}
+        </div>
+
+        <p class="review-text">${escapeHTML(r.en)}</p>
+
+        <div class="review-time">
+          <span>Client feedback</span>
+          <span>${r.stars}/5</span>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+/*
+  Refresh the review cards when their next scheduled change becomes due.
+  This checks every minute, but does not change any card before its
+  assigned interval has elapsed.
+*/
+function scheduleReviewRefresh(){
+  setInterval(()=>{
+    const before=JSON.stringify(getReviewState().slots);
+    const afterState=advanceDueReviewSlots();
+    const after=JSON.stringify(afterState.slots);
+
+    if(before!==after){
+      renderReviews();
+    }
+  },60*1000);
+}
+
+/* Optional manual browsing through the three visible review slots.
+   These buttons rotate the visible selection without adding extra cards. */
+function rotateVisibleReviews(direction){
+  const state=getReviewState();
+  const used=new Set(state.slots.map(slot=>slot.index));
+
+  state.slots.forEach((slot,index)=>{
+    const current=slot.index;
+    let candidate=current;
+
+    for(let attempt=0;attempt<REVIEW_PROFILES.length;attempt++){
+      candidate=(candidate+direction+REVIEW_PROFILES.length)%REVIEW_PROFILES.length;
+
+      if(!used.has(candidate) || candidate===current){
+        break;
+      }
+    }
+
+    used.delete(current);
+    slot.index=candidate;
+    used.add(candidate);
+    slot.lastChange=Date.now();
+    slot.rotationIndex=(slot.rotationIndex||0)+1;
+  });
+
+  saveReviewState(state);
+  renderReviews();
+}
+
+document.getElementById("prevReviews").addEventListener("click",()=>{
+  rotateVisibleReviews(-1);
+});
+
+document.getElementById("nextReviews").addEventListener("click",()=>{
+  rotateVisibleReviews(1);
+});
+
+/* ========== REGISTRATION AND LOGIN MODALS ========== */
+const registerModal=document.getElementById("registerModal");
+const loginModal=document.getElementById("loginModal");
+const codeError=document.getElementById("codeError");
+const codeWrap=document.getElementById("codeWrap");
+
+function openModal(modal){
+  modal.classList.add("show");
+  document.body.style.overflow="hidden";
+
+  const input=modal.querySelector("input");
+  if(input)setTimeout(()=>input.focus(),100);
+}
+
+function closeModal(modal){
+  modal.classList.remove("show");
+  document.body.style.overflow="";
+}
+
+document.getElementById("registerOpen").addEventListener("click",()=>{
+  codeError.classList.remove("show");
+  codeWrap.classList.remove("invalid");
+  openModal(registerModal);
+});
+
+document.getElementById("loginOpen").addEventListener("click",()=>{
+  openModal(loginModal);
+});
+
+document.querySelectorAll("[data-close]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    closeModal(button.closest(".modal-backdrop"));
+  });
+});
+
+[registerModal,loginModal].forEach(modal=>{
+  modal.addEventListener("click",event=>{
+    if(event.target===modal)closeModal(modal);
+  });
+});
+
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"){
+    closeModal(registerModal);
+    closeModal(loginModal);
+  }
+});
+
+document.getElementById("registerForm").addEventListener("submit",event=>{
+  event.preventDefault();
+
+  codeError.classList.remove("show");
+  codeWrap.classList.remove("invalid");
+
+  void codeError.offsetWidth;
+
+  codeWrap.classList.add("invalid");
+  codeError.classList.add("show");
+});
+
+/* INITIALIZE PAGE */
+renderChart();
+renderCounters();
+renderReviews();
+scheduleReviewRefresh();
+</script>
+</body>
+</html>
